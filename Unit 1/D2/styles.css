@@ -1,0 +1,102 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+}
+
+/* universal */
+
+a,
+a:visited,
+a:link {
+    color: #107777;
+}
+
+hr {
+    border-width: 0;
+    border-top: 1px solid #c4f3f2;
+}
+
+
+/* header */
+
+.logo-img {
+    margin: 0 auto;
+    display: block;
+}
+
+.slogan {
+    display: block;
+    text-align: center;
+    width: 100%;
+    background-color: #fdfbf1;
+    border-top: 1px solid #ffd877;
+    height: 3rem;
+    padding-top: .75rem;
+    color: #004d4c;
+    font-size: 1.2rem;
+}
+
+/* main */
+
+main {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 4rem;
+}
+
+.title-description {
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.hero-image {
+    border-radius: .5rem;
+    box-shadow: 0 .15rem .5rem #bbb;
+}
+
+.img-author {
+    font-size: 1.2rem;
+    color: #999;
+}
+
+.featured {
+    display: block;
+    padding-left: 1rem;
+    border-left: 1px solid #ffd877;
+    color: #b5460f;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* article */
+
+article {
+    text-align: left;
+}
+
+.ingredients-title {
+    margin-top: 3.5rem;
+}
+
+.ingredient-list li {
+    line-height: 2rem;
+    font-size: 1.1rem;
+}
+
+.method-description {
+    font-size: 1.17rem;
+}
+
+.read-more {
+    font-size: 1.17rem;
+}

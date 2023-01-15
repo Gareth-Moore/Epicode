@@ -1,3 +1,5 @@
+console.log("Unit 2, D4")
+
 function print(toPrint) {
   console.log(toPrint)
 }
@@ -66,10 +68,28 @@ ranNumArr.forEach(value => {
 /* EXERCISE 7 (EXTRA)
  Write a piece of code for deleting only even entries from an array.
 */
+let deleteEvenNumArr = [...ranNumArr];
+deleteEvenNumArr.forEach(function callback(value, index) {
+  if (value%2===0) {
+    delete deleteEvenNumArr[index];
+  }
+});
+
 
 /* EXERCISE 8
 Write a piece of code to create an array of 10 elements of random numbers in the range from 0 to 10 inclusive WITHOUT duplicates
  */
+let nonDuplicateArr = []
+for (let i = 0; nonDuplicateArr.length < 10; i++) {
+  let newRandNumBool = false;
+  do {
+    let ranNumber = Math.floor(Math.random * 10) + 1;
+    if (!nonDuplicateArr.includes(ranNumber)) {
+      nonDuplicateArr.push(ranNumber);
+      newRandNumBool = true;
+    }
+  } while (newRandNumBool===false)
+}
 
 /* EXERCISE 9
  Replace all the strings contained in an array with their length.

@@ -36,13 +36,20 @@ for (let i = 0; i < 10; i++) {
 /* EXERCISE 4
   Write a piece of code for getting only even numerical values from an array . 
  */
-let numArr, evenNumArr = []
-for (let i = 0; i < 100; i++) numArr.push(Math.floor(Math.random() * 101));
-numArr.forEach((arr, arrIndex) => {
-  if(arrIndex%2===0) evenNumArr.push(arr);
-  console.log(arr, arrIndex)
-});
+let evenNumArr = []
+function getOnlyEven (arr) {
+  for (let i = 0; arr.length; i++) {
+    if (arr[i]%2===0) {
+      evenNumArr.push(arr )
+    }
+  }
+}
 
+
+// numArr.forEach(function callback(arr, arrIndex) {
+//   if(arrIndex%2===0) evenNumArr.push(arr);
+//   console.log(arr, arrIndex)
+// });
 /* EXERCISE 5
 Write a piece of code to sum up the numbers in an array
  */

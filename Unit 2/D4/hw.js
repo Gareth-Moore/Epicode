@@ -38,9 +38,9 @@ for (let i = 0; i < 10; i++) {
  */
 let evenNumArr = []
 function getOnlyEven (arr) {
-  for (let i = 0; arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     if (arr[i]%2===0) {
-      evenNumArr.push(arr )
+      evenNumArr.push(arr[i])
     }
   }
 }

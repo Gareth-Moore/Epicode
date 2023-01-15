@@ -1,3 +1,7 @@
+function print(toPrint) {
+  console.log(toPrint)
+}
+
 /* EXERCISE 1
   Given the object below, write a piece of code for programmatically removing the last skill from the skills array inside the me object.
  */
@@ -7,18 +11,37 @@ const me = {
   lastName: "Doe",
   skills: ["javascript", "html", "css"],
 };
+for (let i = 0; i < 3; i++) {
+  me.skills.pop()
+}
 
 /* EXERCISE 2
 Write a piece of code to create an array of only ODD numbers from 1 to 100
  */
+let oddNumArr = []
+for (let i = 0; i < 100; i++) {
+  if (i%2===1) {
+    oddNumArr.push(i)
+  }
+}
 
 /* EXERCISE 3
 Write a piece of code to create an array of 10 elements of random numbers in the range from 0 to 100 inclusive
  */
+let ranNumArr = []
+for (let i = 0; i < 10; i++) {
+  ranNumArr.push(Math.floor(Math.random() * 101));
+}
 
 /* EXERCISE 4
   Write a piece of code for getting only even numerical values from an array . 
  */
+let numArr, evenNumArr = []
+for (let i = 0; i < 100; i++) numArr.push(Math.floor(Math.random() * 101));
+numArr.forEach((arr, arrIndex) => {
+  if(arrIndex%2===0) evenNumArr.push(arr);
+  console.log(arr, arrIndex)
+});
 
 /* EXERCISE 5
 Write a piece of code to sum up the numbers in an array

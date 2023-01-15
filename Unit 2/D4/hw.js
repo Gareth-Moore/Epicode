@@ -44,19 +44,24 @@ function getOnlyEven (arr) {
     }
   }
 }
+// run the getOnlyEven function with the ranNumArr array
 
-
-// numArr.forEach(function callback(arr, arrIndex) {
-//   if(arrIndex%2===0) evenNumArr.push(arr);
-//   console.log(arr, arrIndex)
-// });
 /* EXERCISE 5
 Write a piece of code to sum up the numbers in an array
  */
+let sum = 0;
+ranNumArr.forEach(number => {
+  sum+=number;
+});
 
 /* EXERCISE 6
  Write a piece of code for increasing all the numerical values in a array by 1.
 */
+let oneUpArr = []
+ranNumArr.forEach(value => {
+  value++;
+  oneUpArr.push(value)
+});
 
 /* EXERCISE 7 (EXTRA)
  Write a piece of code for deleting only even entries from an array.

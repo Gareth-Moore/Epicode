@@ -80,44 +80,27 @@ deleteEvenNumArr.forEach(function callback(value, index) {
 Write a piece of code to create an array of 10 elements of random numbers in the range from 0 to 10 inclusive WITHOUT duplicates
  */
 let nonDuplicateArr = []
-function createUniqueArr () {
-  for (let [i, j] = [0, 0]; nonDuplicateArr.length < 10; i++) {
-    let uniqueNumBool = false;
-    do {
-      let ranNumber = (Math.floor((Math.random() * 10) + 1));
-      if (!nonDuplicateArr.includes(ranNumber)) {
-        nonDuplicateArr.push(ranNumber);
-        uniqueNumBool = true;
-      }
-      j++;
-      if (j>1000) {
-        return alert("Function exceeded 1000 loops!");
-        
-      }
-    } while (uniqueNumBool === false);
-  }
+for (let i = 0; nonDuplicateArr.length < 10; i++) {
+  let newRandNumBool = false;
+  do {
+    let ranNumber = Math.floor(Math.random * 10) + 1;
+    if (!nonDuplicateArr.includes(ranNumber)) {
+      nonDuplicateArr.push(ranNumber);
+      newRandNumBool = true;
+    }
+  } while (newRandNumBool===false)
 }
 
 /* EXERCISE 9
  Replace all the strings contained in an array with their length.
  es.: ["strive", "is", "great"] => [6, 2, 5]
 */
-let stringArr = ['butter', 'cream', 'eggs', 'flour', 'sugar', 'milk']
-let stringLengthArr = []
-stringArr.forEach(value => {
-  stringLengthArr.push(value.length)
-});
 
 /* EXERCISE 10
  Write a piece of code for reverting an array.
  es:
  [1, 3, 5] ==> [5, 3, 1]
 */
-let numArr = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
-let reverseNumArr = []
-for (let i = numArr.length; i != 0; i--) {
-  reverseNumArr.push(numArr[i-1]);
-}
 
 /* EXERCISE 11
  Write a piece of code for getting the maximum numerical value from an array.

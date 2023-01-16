@@ -16,6 +16,10 @@ const me = {
 for (let i = 0; i < 3; i++) {
   me.skills.pop()
 }
+// or 
+function removeLastEntry(arr) {
+  arr.pop()
+} // input: removeLastEntry(me.skills)
 
 /* EXERCISE 2
 Write a piece of code to create an array of only ODD numbers from 1 to 100
@@ -122,6 +126,17 @@ for (let i = numArr.length; i != 0; i--) {
 /* EXERCISE 11
  Write a piece of code for getting the maximum numerical value from an array.
 */
+let maxNum;
+ranNumArr.forEach(function (value, index) {
+  if (index===0) {
+    maxNum = value;
+  }
+  else {
+    if (value > maxNum) {
+      maxNum = value;
+    }
+  }
+});
 
 /* This movies array is used throughout the exercises. You're not supposed to alter it. */
 const movies = [
@@ -238,32 +253,80 @@ const movies = [
       "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
   },
 ];
+// Title: "The Lord of the Rings: The Fellowship of the Ring",
+//     Year: "2001",
+//     imdbID: "tt0120737",
+//     Type: "movie",
+//     Poster:
 
 /* EXERCISE 12
     Write a piece of code to  find the oldest movie in the provided movies array.
 */
+let oldestMovie = movies[0].Year;
+movies.forEach(function (value, index) {
+  if (oldestMovie > value.Year) {
+    oldestMovie = value.Year;
+  }
+});
 
 /* EXERCISE 13
     Write a piece of code to get the number of movies contained in the provided movies array.
 */
+let numOfMovies = movies.length;
 
 /* EXERCISE 14
     Write a piece of code to create an array with just the titles of the movies contained in the provided movies array.
 */
+let movieTitlesArr = [];
+movies.forEach(function (value) {
+  movieTitlesArr.push(value.Title)
+});
 
 /* EXERCISE 15
    Write a piece of code to get only the movies produced in this millennium from the provided movies array.
 */
+let movieThisMillen = [];
+movies.forEach(value => {
+  if (value.Year >= 2000) {
+    movieThisMillen.push(value.Year)
+  }
+});
 
 /* EXERCISE 16
    Write a piece of code to get  the movie with the  id given below from the provided movies array.
 */
 const id = "tt0355702";
+let selectedMovie;
+for (let i = 0; i < movies.length; i++) {
+  if (movies[i].imdbID === id) {
+    selectedMovie = movies[i].Title;
+    break;
+  }
+}
+// OR // Input ID as parameter to search
+function findMovieById(input_id) {
+  for (let i = 0; i < movies.length; i++) {
+    if (movies[i].imdbID === input_id) {
+      selectedMovie = movies[i].Title;
+      return console.log(`You have selected ${selectedMovie} to watch.`)
+    }
+  }
+}
 
 /* EXERCISE 17
      Write a piece of code to get  the  the sum of all the years in which the movies in the provided movies array have been produced.
 */
+// I am not sure exactly what is being asked here.
+// In this case I did the following: 2001 + 2005 + 2003 etc... 
+let sumOfMovieYears = 0;
+for (const obj of movies) {
+  sumOfMovieYears += parseInt(obj.Year);
+  console.log(sumOfMovieYears)
+} // output: 28007
+
 
 /* EXERCISE 18
    Write a piece of code to get  all the movies in the provided movies array which contain the string value (provided below) in the title.
 */
+// Sorry, I don't understand the question and there is no string value provided
+// below? Thanks

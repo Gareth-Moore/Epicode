@@ -51,3 +51,11 @@ footer {
     margin: 1rem auto;
     text-align: center;
 }
+
+.tiny_links {
+    font-size: .4rem;
+}
+
+.hidden {
+    display: none;
+}

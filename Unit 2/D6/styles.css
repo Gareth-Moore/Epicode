@@ -1,0 +1,53 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-size: 16px;
+}
+
+main,
+aside {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: lightcyan;
+}
+
+form {
+    width: 100%;
+    padding: 5rem 0 1.5rem 0;
+}
+
+img {
+    max-width: 300px;
+}
+
+span {
+    font-size: 10px;
+    vertical-align: super;
+}
+
+label,
+textarea {
+    display: block;
+}
+
+label {
+    text-align: center;
+    padding-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+textarea {
+    width: 90%;
+    margin: 0 auto;
+    resize: none;
+}
+
+footer {
+    font-size: 12px;
+    margin: 1rem auto;
+    text-align: center;
+}

@@ -10,9 +10,9 @@ Details:    Today you are in charge of building the shopping cart logic for a we
             Either way, if the cart goes over 100, shipping cost should be 0.
 
             Some users as examples are already provided.
-            
-           
 */
+
+
 
 const marco = {
   name: "Marco",
@@ -32,5 +32,16 @@ const amy = {
   isAmbassador: false,
 };
 
-const prices = [34, 5, 2];
+
+const [priceLess100, priceMore100] = [[34, 5, 2],[29, 48, 102, 14]];
 const shippingCost = 50;
+/*
+calculate price 
+apply discount if ambassador
+add shipping price if cart > 100
+print final price
+ */
+const user_cart = 0;
+function checkout (customer) {
+  console.log([customer].name)
+}

@@ -41,7 +41,23 @@ apply discount if ambassador
 add shipping price if cart > 100
 print final price
  */
-const user_cart = 0;
-function checkout (customer) {
-  console.log([customer].name)
+function checkout (user_object, price_array) {
+  const ambassador_discount = user_object.isAmbassador === true ? true : false;
+  let cart = 0;
+  for (let i = 0; i < price_array.length; i++) {
+    cart += price_array[i];
+  }
+  if (ambassador_discount) {
+    console.log(`Hello Ambassador, we have applied a 30% discount to your $${cart} purchase. Your new total is $${cart * 0.7}!`)
+    cart = cart * 0.7;
+  }
+  let totalPrice;
+  if (cart > 100) {
+    totalPrice = cart;
+    console.log(`Your total, without shipping, is $${cart}.`)
+  } else {
+    totalPrice = cart + shippingCost;
+    console.log(`Your cart is $${cart} plus shipping of $${shippingCost} which comes to a total of $${totalPrice} `)
+  }
+  console.log(totalPrice)
 }

@@ -50,106 +50,182 @@
         questions!
       </h2>
     </div>
+    <footer>This is default text since there was no footer here before! Behold the magic of science!</footer>
     <script>
-      /* EXERCISE 1
-       Write a function for changing the title of the document in something else.
-      */
-      const h1 = document.querySelector('h1')
-      h1.innerText = "Here is a new title!"
 
-      const changeTitle = function (newTitle) {
-        //
+      // run all functions
+      function runAllFunc () {
+        changeTitle();
+      }
+      
+      
+      /* EXERCISE 1
+      Write a function for changing the title of the document in something else.
+      */
+     
+     const h1 = document.querySelector('h1')
+     const changeTitle = function (newTitle) {
+        h1.innerText = newTitle ? newTitle : "Here is a new title!";
       };
 
       /* EXERCISE 2
-       Write a function for changing the class of the title of the page in "myHeading".
+       Write a function for changing the class of the title of the page in "myHeading". ((((To myHeading?))))
       */
 
       const addClassToTitle = function () {
-        //
+        h1.classList.add("myHeading");
       };
 
       /* EXERCISE 3
        Write a function for changing the text of only the p which are children of a div.
       */
-
+     
+     const pInDiv = document.querySelectorAll("div > p");
       const changePcontent = function () {
-        //
+        for (let i = 0; i < pInDiv.length; i++) {
+          pInDiv[i].classList.add("myHeading");
+        }
       };
 
       /* EXERCISE 4
        Write a function for changing the href property of every link to https://www.google.com
       */
 
+      const allLinks = document.querySelectorAll('a');
       const changeUrls = function () {
-        //
+        for(let i = 0; i < allLinks.length; i++) {
+          allLinks[i].setAttribute('href', 'https://www.google.com');
+        }
       };
 
       /* EXERCISE 5
        Write a function for adding a new list item in the second unordered list.
       */
-
+      const secondList = document.getElementById("secondList")
+      let liPlace = 4;
       const addToTheSecond = function (content) {
-        //
+        const li = document.createElement('li');
+        li.textContent = `List item #${liPlace}`;
+        liPlace++;
+        secondList.appendChild(li, secondList.lastElementChild)
       };
 
       /* EXERCISE 6
        Write a function for adding a second paragraph to the first div.
       */
-
+      const divs = document.querySelector('div')
       const addParagraph = function (content) {
-        //
+        const p = document.createElement('p')
+        p.innerText = content ? content : "Here is some default text";
+        divs.appendChild(p, divs)
       };
 
       /* EXERCISE 7
        Write a function for making the first unordered list disappear.
       */
-
+      const firstUl = document.getElementById('firstList')
       const firstUlDisappear = function () {
-        //
+        firstUl.style.display = "none";
       };
 
       /* EXERCISE 8
        Write a function for making the background of every unordered list green.
       */
-
+      const allUL = document.querySelectorAll('ul')
       const paintItGreen = function () {
-        //
+        for (let i = 0; i < allUL.length; i++) {
+          allUL[i].style.backgroundColor = "green";
+        }
       };
 
       /* EXERCISE 9
        Make the heading of the page change color every time the user clicks on it.
       */
-
-      const makeItClickable = function () {
-        //
-      };
+      const colorArray = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f']
+      // h1 declared earlier
+      h1.addEventListener('click', makeItClickable => {
+          let newColour = "#"
+        for (let i = 0; i < 6; i++) {
+          newColour += colorArray[Math.floor(Math.random() * 16)]
+        }
+        h1.style.color = newColour;
+      })
 
       /* EXERCISE 10
        Change the footer text with something else when the user clicks on it.
       */
-
-      const changeFooterText = function () {
-        //
-      };
+      const footer = document.querySelector('footer')
+      footer.addEventListener('click', changeFooterText => {
+        footer.innerText = "The footer has been updated with exercise 10 text"
+      });
 
       /* EXERCISE 11
        Attach an event listener to the input field in the page for console logging its value just after any keystroke.
       */
 
       const inputField = document.getElementById("input-field");
-      // ...
+      inputField.addEventListener("keydown", event => {
+        console.log(inputField.value)
+      })
 
       /* EXERCISE 12
        Create a welcome alert message when the page successfully loads.
       */
 
       window.onload = function () {
-        //
+        // alert("Page has finished loading. Thank you!") --------->> UNCOMMENT PLEASE, It's a bit annoying having the alert pop up repeatedly :) Thank you
       };
 
       /* EXERCISE 13
        Use HTML5 tags to properly provide semantic meaning to the different portions of the page.
+      */
+      
+      // I COPIED THE ORIGINAL HTML CODE DOWN BELOW AS I'D HAVE TO REDO ALL THE SEMANTIC CHANGES IN THE JS FUNCTIONS
+      // CHANGES HAVE BEEN CAPATILIZED LIKE THIS FOR EASIER READING.
+
+      /*
+      <HEADER>
+        <h1>This is the title of the page</h1>
+        <h2>This is the subtitle of the page</h2>
+      </HEADER>
+
+      <MAIN>
+        <hr />
+
+        <ul id="firstList">
+          <li>1st</li>
+          <li>2nd</li>
+          <li>3rd</li>
+        </ul>
+
+        <ul id="secondList">
+          <li>1st</li>
+          <li>2nd</li>
+          <li>3rd</li>
+        </ul>
+
+        <a href="strive.school">This link goes to Strive School</a>
+
+        <div>
+          <p>This text is just for the exercise</p>
+        </div>
+
+        <div>
+          <input
+            type="text"
+            id="input-field"
+            placeholder="input field for the exercise"
+          />
+        </div>
+      </MAIN>
+
+      <FOOTER>
+        <p>And this text is just for the exercise too!</p>
+        <h2 style="color: red">
+          Save this page on your computer and open it with VSCode to get the
+          questions!
+        </h2>
+      </FOOTER>
       */
     </script>
   </body>

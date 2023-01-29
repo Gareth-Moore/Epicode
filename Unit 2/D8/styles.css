@@ -1,0 +1,67 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+a,
+a:visited,
+a:link {
+    color: red;
+}
+
+
+table {
+    border-radius: 5px;
+    border-collapse: collapse;
+}
+
+th:first-child {
+    border-top-left-radius: 5px;
+}
+th:last-child {
+    border-top-right-radius: 5px;
+}
+.lastRow td:first-child {
+    border-bottom-left-radius: 5px;
+}
+.lastRow td:last-child {
+    border-bottom-right-radius: 5px;
+}
+
+p {
+    margin: 2rem 0;
+}
+
+
+td {
+    border: 1px solid green;
+}
+
+td:hover {
+    border: 3px solid pink;
+}
+
+tr {
+    border: 2px dotted red;
+}
+
+.change_font {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+.border {
+    border: 1px solid black;
+}

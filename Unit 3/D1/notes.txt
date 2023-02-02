@@ -1,0 +1,325 @@
+Unit 3, D1 notes
+-------------------------------------------
+
+    
+    WHAT IS THE CASCADE?
+
+A way to resolve competing CSS declarations
+When a rule/CCS declaration is created, it enters
+the cascade. The higher up the CSS cascade 
+the higher the chances that that rule will be
+the final style applied.
+
+If two rules are tied, then they go up to the 
+next level of the cascade and check again.
+
+-------------------------------------------
+
+
+    THE CSS CASCADE
+
+1. IMPORTANCE
+2. ORIGIN
+3. SPECIFICITY
+4. POSITION
+
+
+    1. IMPORTANCE
+
+transition  -   *active* transition rules   1st
+!important  -   !important rules            2nd
+animation   -   *active* animation rules    3rd
+normal      -   The bulk of the rules       4th
+
+
+
+    2. ORIGIN
+
+website     -   only level were developers have any control     5th
+user        -   no comment here...?                             6th
+browser     -   broswers have their own style sets              7th
+
+
+
+    3. SPECIFICITY
+
+inline      -   styles declared with 'style' in HTML            8th
+layer       -   layer's will be implemented soon, styles        9th
+                are declared in '@layer two {}' will be 
+                prioritized over '@layer one {}'                
+id                                                              10th
+class | attribute | psuedo-class                                11th
+            -   includes 'attribute selectors' that target
+                HTML attributes, like [checked]
+            -   includes 'pseudo-selectors', like 'hover'
+                and 'first-of-type'
+type | pseudo-element                                           12th
+            -   target elements based on their 'tag-type', 
+                using syntax 'type'
+            -   includes 'psuedo-elemnts', like 'before' and
+                'selection'
+            -   includes normal HTML tags like 'p', 'img'
+                and 'h1'
+
+    
+    NOTE:
+    Universal selectors (*) and combinators (+, >, ~, _, ||)
+        have no effect on SPECIFICITY.
+    
+    If rules are competing in regards to SPECIFICITY, the 
+        element with the highest specificity (1st id, 2nd class
+        and 3rd type) wins. However if they both have, for 
+        example, 1 id each, but one element has a class and the
+        other has a normal type element then the one with the
+        class is chosen.
+
+
+
+    4. POSITION
+
+Rules defined later within a '<style>' tag or stylesheets      13th, last
+will win all else being equal. For example:
+   
+    p = {
+        color: green;
+        color: red;
+    }
+
+Red will win as it was positioned last. 
+
+----------------------------------------------------------
+
+
+    CSS selectors
+
+.hero.bigger {...}
+
+    Putting two classes like this together means 
+    to search for an element with both .hero and
+    .bigger class names like class="hero bigger"
+
+
+.hero > p {...}
+
+    Selects all the p elements that are DIRECT
+    children of the parent .hero class. No 
+    nested p elements that are decendents will
+    be searched, only first/direct children.
+
+.img + p {...}
+
+    The adjacent sibling combinator (+) separates 
+    two selectors and matches the second element 
+    only if it immediately follows the first element, 
+    and both are children of the same parent. The 
+    next sibling element.
+
+.hero span ~ p {...}
+
+    Selects *all* the elements that are 
+    siblings, with the same parents, AFTER the
+    first p element that is a child of the
+    .hero class. 
+
+attribute selectors
+
+    [attr]
+    []
+    selects elements with said attribute
+    [attr=value]
+    [attr~=value]
+    [attr|=value]
+    [attr^=value]
+    [attr$=value]
+    [attr*=value]
+
+    input[type='email'] {...}
+
+psuedo-classes
+
+    :active, :hover, :focus, :visited etc.
+
+pseudo-elements
+
+    ::before, ::after, ::first-line, ::first-letter etc.
+
+    NOTE:
+    Each element has a content box, an ::after,
+    and a ::before box. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Test 1
+
+1. IMPORTANCE
+    transition
+    !important
+    animation
+    normal
+2. ORIGIN
+    website
+    user
+    broswer
+3. SPECIFICITY
+    inline X
+    layer
+    id
+    class | attribute | psuedo-class
+    type | psuedo-element
+4. Position
+    Last element in a style tag or sheet
+
+Test 2
+
+1. IMPORTANCE
+    transition
+    !important
+    animation
+    normal
+2. ORIGIN
+    website
+    user
+    browser
+3. SPECIFICITY
+    inline
+    layer
+    id
+    class | attribute | pseudo-class
+    tag | psuedo-element X
+4. POSITION
+    element positioned last in <style> tags
+    or style sheets.
+
+
+Test 3
+
+1. IMPORTANCE
+    transition
+    !important
+    animation
+    normal
+2. ORIGIN
+    website
+    user
+    broswer
+3. SPECIFICITY
+    inline
+    layer
+    id
+    class | attribute | pseudo-class
+    type | pseudo-element
+4. POSITION
+    The last style declared within <style> tags or 
+    style sheets wins. For example:
+    p {
+        color: red;
+        color: green
+    }
+
+100%
+
+Test 4
+
+1. IMPORTANCE
+    transition
+    !important
+    animation
+    normal
+2. ORIGIN
+    website
+    user
+    broswer
+3. SPECIFICITY
+    inline
+    layer
+    id
+    class | attribute | pseudo-class
+    type | pseudo-element
+4. POSITION
+    Styles declared last in <style> tags or 
+    style sheets will win. For example:
+    p {
+        color: red;
+        color: green
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,176 @@
+Unit 3, D2
+
+
+Flexbox
+
+    Main axis: Primary axis along which flex items are places.
+    Main size: The length a flex item takes up on the main axis.
+    Cross axis: Perpendicular axis to the main axis. The secondary axis.
+    Cross size: The length a flex item takes up on the cross axis.
+    
+    Other:
+    main-start
+    main-end
+    cross-start
+    cross-end
+
+
+Flex CONTAINER (Parent) properties:
+
+    Display
+    Defines a flex container. Inline or block.
+
+    Flex-direction
+    Flex is a single direction layout unless wrapping is applied.
+    Flex direction sets the direction of the main access. The
+    default is 'row' which is left to right. 
+
+    Wrap
+    Flex items will be placed on the main access. If they cannot
+    fit they will overflow the container. We can wrap them
+    using 'flex-wrap'. By default there is no wrap. 'wrap' 
+    will wrap onto multiple lines from top to bottom and
+    'wrap-reverse' will do the same but from bottom to top.
+
+    Flex-flow
+    The shorthand for flex-direction and flex wrap. Default 
+    is 'flex-flow: row nowrap;'
+
+    Justify-content
+    Defines the alignment of items along the main axis. 
+    Possible alignments:
+        flex-start          |***      |
+        flex-end            |      ***|
+        center              |   ***   |
+        space-between       |*   *   *|
+        space-around        | *  *  * |
+        space-evenly        | * * * * |
+    'space-around' applies a uniform space to each side of a
+    flex item. Thus the sides closest to the container are 1 
+    unit of space but the space between two items is 2 units.
+    This is because each item gets a left space and a right
+    space and when two items are next to each other they get
+    the left and right spaces created.
+    NOTE: the safest, in terms of browser support, alignments
+    are flex-start, flex-end and center. There are also
+    'right', 'left', 'start' and 'end' which I didn't cover
+    here.
+
+    Align-items
+    Defines how items are aligned on the cross axis. Like
+    the 'justify-content' but along the cross axis.
+    Let's take a look at the options:
+
+    flex-start       flex-end        center         stretch
+    |*******|        |       |       |       |      |*******|
+    |** * **|        |       |       |** *** |      |*******|
+    |       |        |** * * |       |** ** *|      |*******|
+    |       |        |*******|       |       |      |*******|
+    
+    *and 'baseline' which aligns the baseline (which is the
+    line where most text sits, aka the baseline of the 
+    text) of each item even if their containers (the flex
+    item itself) aren't aligned.
+
+    Align-content
+    Align-content is like the big brother of the alignments. 
+    If wrap is enabled and the cross axis has additional space:
+    all the flex-items can be grouped again in the same manner
+    as 'justify-content'. 
+    See: notes1.jpg
+
+    Gap, row-gap, column-gap
+    Gap EXPLICITLY controls the space BETWEEN flex items. This
+    does not include the space on the edges between the
+    item and the container wall. Gap can be thought of as
+    the minimum gutter. Meaning that it will provide a minimum
+    distance between items but can still allow for more
+    space depending on 'justify-content' and other properties.
+    However, items cannot be closer than together than the
+    gap has specified.
+    This is not exclusive to flex-box. You can use it on grid
+    and multi-column layouts.
+
+
+    SUMMARY OF FLEX CONTAINER PROPERTIES
+ >  display: flex | inline-flex;
+ >  flex-direction: row | row-reverse | column | column-reverse
+ >  flex-wrap: nowrap | wrap | wrap-reverse
+    flex-flow: row/row-reverse/column/column-reverse 
+               | wrap/nowrap/wrap-reverse;
+ >  justify-content: flex-start | flex-end | center | space-between 
+                     space-around | space-evenly | right | left 
+                     start | end
+ >  align-items: flex-start | flex-end | center | stretch | baseline
+ >  align-content: normal (default) | flex-start | flex-end | center
+    space-between | space-around | space-evenly | stretch
+ >  gap: 10px;
+ >  gap: 10px 20px: (row-gap column-gap)
+ >  row-gap: 10px;
+ >  column-gap: 10px;
+
+
+
+Flex ITEMS (Child) properties:
+
+    Order
+    By default, items are sorted by 'source order'. However, you 
+    can override the source order with the 'order' property. Self
+    explanitory really. If there is a conflict of 'order' such as 
+    two or more items with the same 'order' then the 'source order'
+    will be used.
+
+    Flex-grow
+    In regard to free any free space along the main axis: flex grow
+    will divide up the space to each item equally. The default is 0
+    which means the items do not grow at all to fit the empty space.
+    However, you can adjust the ration by changing item's flex
+    grow value. If an item had 2 but the others had 1 then the 
+    one with 2 would have twice the amount of the free space. Flex 
+    grow is only in regards to the free space on the main axis. 
+    Not the overall item size. 
+
+    Flex-shrink
+    Similar to flex-grow but in reverse. Shrink defines how much
+    an item is reduced by to fit the flex container. The default
+    is 1. Which means all items shrink uniformly. If there are 
+    2 items that are 100px wide and a container that is 150px
+    wide. If their flex-shrink values are 1 (default) and 2
+    then the item with 2 would shrink twice as much to fill the 
+    space. Meaning item one would shrink by 16.6px to 83.4px.
+    Whilst item 2 would shrink by 33.4px. So combined they
+    shrunk by 50px and item 2 shrank twice as much as item 1.
+    Their final values would be 83.4px and 66.6px;
+
+    Flex-basis
+    Basis defines the size of an element BEFORE it considers any
+    empty space in a flex container. You can use px, vh, 5 etc.
+    If you use the 'auto' keyword then the flex item's height/
+    width values are considered and it grows dependant on the
+    'flex-grow' value. If set to 0 then extra space around the
+    item is not considered.
+
+    Flex
+    Flex is the shorthand for writing flex-grow, flex-shrink and
+    flex-basis. The second and thrid values are optional. Their 
+    default is '0 1 auto' BUT if you set just a single value like
+    'flex: 5' then: 
+        flex-grow is 5
+        flex-shrink is 1
+        but flex-basis is 0%...
+    So keep that in mind. It is recommended that you use this 
+    when changing grow, shrink or basis values.
+
+    Align-Self
+    A pint-sized version of 'align-items'. This allows flex items
+    to align themselves individually. It works the exact same 
+    as 'align-items' but just on a single item.
+
+    
+    SUMMARY OF FLEX ITEM PROPERTIES
+ >  order: 0; (neg numbers are invalid, default is 0)
+ >  flex-grow: 0; (neg numbers are invalid, default is 0)
+ >  flex-shrink: 1; (neg numbers are invalid, default is 1)
+ >  flex-basis: 
+ >  flex: 0 1 auto (flex grow/shrink/basis)
+ >  align-self: flex-start | flex-end | center | stretch | baseline

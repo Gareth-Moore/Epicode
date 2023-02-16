@@ -1,0 +1,228 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    --bg-clr: #EAEDED;
+    --bg-clr-dark: #222F3E;
+    --bg-clr-light: #364759;
+    --highlight-clr: #F56600;
+    --link-clr: #007185;
+    --clr-white: #FFF;
+
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--bg-clr);
+}
+
+a,
+a:link,
+a:visited {
+    text-decoration: none;
+    color: var(--clr-white);
+}
+
+
+/* HEADER AND NAV BAR */
+
+header .header-logo {
+    width: 100%;
+    background-color: var(--bg-clr-dark);
+}
+
+header .header-logo img {
+    display: block;
+    width: 10rem;
+    padding: .5rem 0 1rem 2rem;
+}
+
+header nav {
+    background-color: var(--bg-clr-light);
+    padding: .3rem 0 .3rem 2rem;
+}
+
+header nav button {
+    background-color: transparent;
+    border: none;
+    color: var(--clr-white);
+    font-size: 1rem;
+}
+
+
+/* MAIN BODY */
+
+/* comprised of:
+    main
+    call-to-action
+    hero
+    card-0
+    card-1
+    card-2
+    card-3
+*/
+
+main {
+    margin: 2rem;
+}
+
+.call-to-action {
+    display: block;
+    text-align: center;
+    background-color: var(--highlight-clr);
+    padding: .5rem 0;
+    color: var(--clr-white);
+}
+
+.hero {
+    background-image: url('./assets/bg-image.png');
+    margin-top: 2rem;
+    text-align: center;
+    height: 14rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.hero h1,
+.hero p {
+    flex-basis: 100%;
+    color: var(--clr-white);
+}
+
+.hero h1 {
+    align-self: flex-end;
+}
+
+.hero p {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.card-0 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    gap: 2rem;
+}
+
+.card-0 img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+}
+
+.card-0 .mini-card {
+    padding: 2.5rem;
+    background-color: white;
+    flex: 1 1 0px;
+}
+
+.card-0 .item-container {
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card-0 p {
+    margin-bottom: 1rem;
+}
+
+.card-0 a {
+    color: var(--link-clr);
+    font-weight: bold;
+}
+
+.card-1 {
+    background-color: var(--clr-white);
+    margin-top: 2rem;
+}
+
+.shop-links p,
+.shop-links a {
+    display: inline-block;
+    padding: .8rem 0 .6rem 1.5rem;
+    font-size: 1.2rem;
+}
+
+.shop-links a {
+    font-size: 1rem;
+    color: var(--link-clr);
+    font-weight: bold;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.image-container div {
+    display: flex;
+    justify-content: center;
+    width: 304px;
+    height: 379px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px gray;
+}
+
+.image-container img {
+    align-self: center;
+    height: 100%;
+}
+
+.card-2,
+.card-3 {
+    margin-top: 2rem;
+}
+
+.card-2 div:first-child,
+.card-3 div:first-child {
+    width: 100%;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.card-2 .background img,
+.card-3 .background img {
+    width: 100%;
+}
+
+.card-2 .shop-links,
+.card-3 .shop-links {
+    text-align: center  ;
+}
+
+
+/* FOOTER */
+
+footer {
+    margin-top: 2rem;
+}
+
+footer .back-to-top {
+    background-color: var(--bg-clr-light);
+}
+
+footer .back-to-top a {
+    font-weight: bold;
+    text-decoration: underline;
+    display: block;
+    padding: .6rem;
+    text-align: center;
+}
+
+footer .footer-logo {
+    background-color: var(--bg-clr-dark);
+    display: flex;
+    justify-content: center;
+}
+
+footer .footer-logo img {
+    width: 15rem;
+    padding: 2rem;
+}

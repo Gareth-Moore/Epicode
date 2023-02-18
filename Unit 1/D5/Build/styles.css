@@ -1,0 +1,107 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+}
+
+main div {
+    display: flex;
+}
+
+div div {
+    width: 100px;
+    height: 100px;
+    background-color: tan;
+}
+
+
+main div:nth-child(2n + 1) div:nth-child(2n + 1) {
+    background-color: black;
+}
+
+div:hover {
+    background-color: red !important;
+}
+
+main div:nth-child(2n + 2) div:nth-child(2n + 2) {
+    background-color: black;
+}
+
+main div:first-of-type div {
+    position: relative;
+}
+
+main div:first-of-type div::before {
+    content: "A";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+main div:first-of-type div:nth-child(2)::before {    content: "B"}
+main div:first-of-type div:nth-child(3)::before {    content: "C"}
+main div:first-of-type div:nth-child(4)::before {    content: "D"}
+main div:first-of-type div:nth-child(5)::before {    content: "E"}
+main div:first-of-type div:nth-child(6)::before {    content: "F"}
+main div:first-of-type div:nth-child(7)::before {    content: "G"}
+main div:first-of-type div:nth-child(8)::before {    content: "H"}
+
+main div:last-of-type div {
+    position: relative;
+}
+
+main div:last-of-type div::before {
+    content: "A";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+main div:last-of-type div:nth-child(2)::before {    content: "B"}
+main div:last-of-type div:nth-child(3)::before {    content: "C"}
+main div:last-of-type div:nth-child(4)::before {    content: "D"}
+main div:last-of-type div:nth-child(5)::before {    content: "E"}
+main div:last-of-type div:nth-child(6)::before {    content: "F"}
+main div:last-of-type div:nth-child(7)::before {    content: "G"}
+main div:last-of-type div:nth-child(8)::before {    content: "H"}
+
+main div div:first-of-type,
+main div div:last-of-type {
+    position: relative;
+}
+
+main div div:first-of-type::after,
+main div div:last-of-type::after {
+    content: "1";
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    transform: translateY(-50%);
+}
+
+main div div:last-of-type::after {
+    left: unset;
+    right: -20px;
+}
+
+main div:nth-child(2) div:first-of-type::after,
+main div:nth-child(2) div:last-of-type::after {    content: "2"}
+main div:nth-child(3) div:first-of-type::after,
+main div:nth-child(3) div:last-of-type::after {    content: "3"}
+main div:nth-child(4) div:first-of-type::after,
+main div:nth-child(4) div:last-of-type::after {    content: "4"}
+main div:nth-child(5) div:first-of-type::after,
+main div:nth-child(5) div:last-of-type::after {    content: "5"}
+main div:nth-child(6) div:first-of-type::after,
+main div:nth-child(6) div:last-of-type::after {    content: "6"}
+main div:nth-child(7) div:first-of-type::after,
+main div:nth-child(7) div:last-of-type::after {    content: "7"}
+main div:nth-child(8) div:first-of-type::after,
+main div:nth-child(8) div:last-of-type::after {    content: "8"}

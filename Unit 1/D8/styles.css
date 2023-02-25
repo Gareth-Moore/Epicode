@@ -1,0 +1,496 @@
+*,*::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* 
+    fonts:
+        'Raleway'
+        'Frank Ruhl Libre'
+*/
+
+/* VARIABLES AND DEFAULTS */
+html {
+    font-family: 'Raleway', sans-serif;
+    --clr-primary: #080808;
+    --clr-secondary: white;
+    --clr-background: #FFC017;
+    --clr-hr: #292929;
+    --clr-highlight: #1a8917;
+    --clr-feint: #E6E6E7;
+}
+
+
+/* NAVIGATION BAR */
+
+nav a:link,
+nav a:visited,
+nav a {
+    text-decoration: none;
+    color: var(--clr-primary);
+}
+
+nav {
+    width: 100%;
+    background-color: var(--clr-background);
+    border-bottom: 1px solid var(--clr-hr);
+    position: fixed;
+    top: 0;
+    transition: background-color .7s ease-in-out;
+}
+
+nav div {
+    position: relative;
+    max-width: 1300px;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.6rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-scroll {
+    background-color: var(--clr-secondary);
+    transition: background-color .3s ease-in-out;
+}
+
+nav div svg {
+    height: 1.4rem;
+    align-self: center;
+}
+
+#navigation li {
+    list-style-type: none;
+    display: inline-block;
+    align-self: center;
+}
+
+#navigation {
+    display: flex;
+    gap: 1.5rem;
+}
+
+#navigation li:not(:last-of-type) {
+    display: none;
+    font-size: .8rem;
+}
+
+#navigation li:last-of-type {
+    background-color: var(--clr-primary);
+    align-self: center;
+    padding: .6rem 1rem;
+    border-radius: 25px;
+    transition: background-color .3s ease-in-out;
+}
+
+#get-started-link {
+    color: white;
+    font-size: .9rem;
+
+}
+
+.get-started-scroll {
+    background-color: var(--clr-highlight) !important;
+    transition: background-color .3s ease-in-out !important;
+}
+
+/* HEADER / HERO */
+
+header {
+    background-color: var(--clr-background);
+    border-bottom: 1px solid var(--clr-hr);
+}
+
+header div {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1300px;
+    height: fit-content;
+    padding: 10rem 1.6rem 1.6rem 1.6rem;
+}
+
+header div h1 {
+    font-family: 'Frank Ruhl Libre', sans-serif;
+    font-size: 4.5rem;
+    font-weight: normal;
+    line-height: 4.5rem;
+}
+
+header div p {
+    padding-top: 3rem;
+    font-size: 1.4rem;
+    line-height: 1.5rem;
+}
+
+header div a {
+    display: inline-block;
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: var(--clr-secondary);
+    background-color: var(--clr-primary);
+    border-radius: 30px;
+    padding: .5rem 3rem;
+    margin: 3rem 0 4.5rem 0;
+}
+
+/* MAIN / TRENDING ARTICLES */
+
+main {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--clr-feint);
+}
+
+.main-container {
+    max-width: 1300px;
+    padding: 1.6rem;
+    margin: 0 auto;
+}
+
+#trending-header {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+#trending-header h2 {
+    font-size: 1rem;
+    display: inline-block;
+}
+
+#trending-header svg {
+    border: 1px solid gray;
+    border-radius: 50%;
+    padding: .15rem;
+}
+
+#trending-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.trending-item {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.trending-item .item-left h3 {
+    font-size: 2rem;
+    letter-spacing: .1rem;
+    color: var(--clr-feint);
+    top: -.6rem;
+    line-height: 1.2rem;
+}
+
+.trending-item .item-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.trending-item .item-right .article-author {
+    display: flex;
+    gap: .8rem
+}
+
+.trending-item .item-right .article-author p {
+    align-self: center;
+    font-size: .8rem;
+}
+
+.trending-item .item-right .article-author img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.trending-item .item-right .article-title {
+    font-weight: bold;
+    margin: .5rem 0;
+}
+
+.trending-item .item-right .article-info {
+    color: gray;
+    font-size: .8rem;
+}
+
+
+main img {
+    width: 32px;
+    height: 32px;
+}
+
+
+/* RELATED LINKS SECTION */
+
+section > div {
+    padding: 1.6rem;
+}
+
+#related-heading {
+    font-size: 1rem;
+    padding-bottom: .3rem;
+    padding-top: .5rem;
+}
+
+#related-links-container {
+    margin-bottom: 1.6rem;
+    border-bottom: 1px solid var(--clr-feint);
+}
+
+#related-links-container ul {
+    margin: 1rem 0;
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .7rem;
+}
+
+#related-links li {
+    display: inline-block;
+    padding: .5rem 1rem;
+    font-size: .8rem;
+    color: var(--clr-hr);
+    border: 1px solid var(--clr-feint);
+    border-radius: 5px;
+}
+
+#related-links-hr {
+    display: none;
+    margin: 1.6rem 0;
+    border: none;
+    border-top: 1px solid var(--clr-feint);
+}
+
+#footer-links li {
+    display: inline-block;
+    color: var(--clr-hr);
+    font-size: .8rem;
+    padding-right: 1.6rem;
+}
+
+#related-links-container #footer-links {
+    display: none !important;
+}
+
+/* ARTICLES */
+
+#articles-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: .5rem;
+    gap: 4rem;
+}
+
+.article-item {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.article-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.author {
+    display: flex;
+}
+
+.author img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.author-name {
+    font-weight: bold;
+    font-size: .7rem;
+    align-self: center;
+    padding-left: 1rem;
+}
+
+.author-name span {
+    font-weight: normal;
+    color: var(--clr-hr);
+}
+
+#articles-container .title h3 {
+    margin: .5rem 0;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+#articles-container .title p {
+    display: none;
+}
+
+.article-infomation {
+    display: flex;
+    justify-content: space-between;
+}
+
+.article-infomation p {
+    font-size: .8rem;
+    text-overflow: ellipsis;
+}
+
+
+.article-image img {
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+}
+
+.load-more {
+    text-decoration: none;
+    width: fit-content;
+    padding: .5rem 1rem;
+    font-size: .8rem;
+    display: block;
+    margin: 2rem auto;
+    color: var(--clr-hr);
+    border: 1px solid var(--clr-hr);
+    border-radius: 45px;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 1.6rem;
+    margin-top: 3.2rem;
+    background-color: var(--clr-primary);
+}
+
+footer svg {
+    fill: white;
+    height: 1.4rem;
+}
+
+footer ul {
+    margin: 1rem 0 2rem 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+footer li {
+    font-size: .75rem;
+    color: white;
+}
+
+footer hr {
+    border: none;
+    border-top: 1px solid rgb(109, 109, 109);
+}
+
+footer p {
+    color: white;
+    font-size: .9rem;
+    padding: 1.5rem 0;
+}
+
+footer img {
+    width: 135px;
+    height: 41px;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 552px) {
+    #navigation li:nth-child(4) {
+        display: inline-block;
+    }
+    
+    header h1 {
+        font-size: 5.5rem;
+    }
+    
+    .article-image img {
+        width: 150px;
+    }
+
+    section > div,
+    nav > div,
+    header > div,
+    .main-container {
+        padding-left: 3.2rem;
+        padding-right: 3.2rem;
+    }
+}
+
+@media screen and (min-width: 728px) {
+    #navigation li:nth-child(n) {
+        display: inline-block;
+    }
+    
+    .author-name {
+        font-size: 1rem;
+    }
+
+    .article-image img {
+        width: 200px;
+        height: 134px;
+    }
+    
+    #articles-container .title h3 {
+        font-size: 1.8rem;
+    }
+
+    #articles-container .title p {
+        display: inline-block;
+        margin-bottom: .5rem;
+    }
+
+    footer hr,
+    footer div,
+    footer p {
+        display: none;
+    }
+
+    footer ul {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 904px) {
+        
+    #related-links-container #footer-links {
+        display: flex !important;
+    }
+
+    #related-item-2 ul {
+        padding-top: 1.6rem;
+        margin-top: 1.6rem;
+        border-top: 1px solid var(--clr-feint);
+    }
+
+    .load-more {
+        display: none;
+    }
+
+    section {
+        max-width: 1300px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        gap: 2rem;
+    }
+
+    #related-links-container {
+        order: 2;
+        padding: 3.2rem 3.2rem 0 0;
+        width: 50%;
+        max-width: 432px;
+    }
+    
+    #articles-container {
+        padding: 3.2rem 0 0 3.2rem;
+        order: 1;
+    }
+}

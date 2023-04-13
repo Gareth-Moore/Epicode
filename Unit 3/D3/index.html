@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <script     src="https://kit.fontawesome.com/aae8a4fc97.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Unit 3, D3</title>
+    <style>
+
+      body {
+          background-image:     url(./assets/musical-notes.svg);
+          background-size: 400px;
+      }
+
+      .table-dark.table-hover tbody tr:hover {
+        background-color: red !important;
+      }
+
+      .accordion-button:not(.collapsed) {
+        color: inherit;
+        background-color: inherit;
+        box-shadow: inherit;
+      }
+
+      .accordion-button:not(.collapsed)::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+      }
+
+      .accordion-button:focus {
+        border-color: inherit;
+        box-shadow: inherit;
+      }
+
+      .white-text {
+        color: white !important;
+      }
+      
+      /* image hover effect */
+      .image-wrapper {
+        perspective: 1000px; 
+        display: inline-block; 
+      }
+
+      .image-wrapper img {
+        width: 300px; 
+        transition: transform 0.5s; 
+      }
+
+      .image-wrapper:hover img {
+        transform: rotateY(180deg); 
+      }
+
+      .image-wrapper img:after {
+        content: ''; 
+        position: absolute; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        transform: rotateY(180deg); 
+      }
+
+      .image-wrapper:hover img:after {
+        transform: rotateY(0deg); 
+      }
+
+      .nav-link {
+        margin-right: 1rem;
+        border-top: 1px solid rgb(79, 79, 79);
+        border-right: 1px solid rgb(79, 79, 79);
+      }
+
+      .navbar-nav .active {
+        font-weight: bold;
+      }
+
+      .collapse-section {
+        font-weight: bold;
+        position: absolute;
+        top: 75%;
+        right: 1.5rem;
+        transform: translateY(-50%);
+      }
+
+      .relative {
+        position: relative;
+      }
+      
+    </style>
+  </head>
+
+  <body class="bg-light">
+
+
+    <!-- HEADER -->
+    <div class="bg-dark pt-5 p-5 pb-1">
+        <h1 class="col-md-display-4 text-light ">Gareth's favourite <i class="fa-solid fa-music text-warning"></i></h1>
+        <p class="text-light mb-2 pb-3">Take a look around at my most and least favourite tracks!</p>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar navbar-expand-md bg-dark text-light h4 fw-light sticky-top pb-3" id="myNavbar">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="fas fa-bars white-text"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link white-text active" aria-current="page" href="#myFavourites">My Favourites</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link white-text" href="#myFavouriteAlbum">My Favourite Album</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link white-text" href="#hallOfShame">Hall of Shame</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  white-text" href="#tapestryOfTape">Tapestry of Tape</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- FAVOURITE ALBUMS SECTION -->
+    <div id="myFavourites" class="relative pt-5 navbarLink">
+        <h1 class="mt-5 display-3 text-center text-light bg-dark pt-2 pb-3">My Favourites</h1>
+        <button class="btn btn-primary collapse-section bg-warning border-0" data-toggle="collapse" data-target="#myFavouritesDiv">Show / Hide</button>
+    </div>
+    <div id="myFavouritesDiv" class="container mx-auto collapse show mt-5">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <div class="card bg-dark mx-auto mt-3" style="width: 18rem;">
+            <div class="card-header text-light h4">Night At The Opera</div>
+            <img src="./assets/album.png" class="card-img-top" alt="Album artwork">
+            <div class="card-body">
+              <h5 class="card-title text-light mt-1">Bohemian Rhapsody</h5>
+              <h6 class="card-title text-light mb-4"><span class="text-warning">by</span> Queen</h6>
+              <a href="https://www.youtube.com/watch?v=fJ9rUzIMcZQ&ab_channel=QueenOfficial" target="_blank" class="btn btn-primary bg-light border-dark text-dark">Play on &nbsp;<i class="fa-brands fa-youtube ml-2 fa-lg"></i></a>
+            </div>
+            <p class="card-text mx-4 text-light " style="font-style: italic;">One of my favourite tracks of all time!</p>
+            <div class="btn-group m-3 " role="group" aria-label="Basic example">
+                <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+                <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+                <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+                <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+                <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <div class="card bg-dark mx-auto mt-3" style="width: 18rem;">
+            <div class="card-header text-light h4">...And Justice For All</div>
+              <img src="./assets/album3.jpg" class="card-img-top" alt="Album artwork">
+            <div class="card-body">
+              <h5 class="card-title text-light mt-1">One</h5>
+              <h6 class="card-title text-light mb-4"><span class="text-warning">by</span> Metallica</h6>
+              <a href="https://www.youtube.com/watch?v=WM8bTdBs-cw&ab_channel=Metallica" target="_blank" class="btn btn-primary bg-light border-dark text-dark">Play on &nbsp;<i class="fa-brands fa-youtube ml-2 fa-lg"></i></a>
+            </div>
+            <p class="card-text mx-4 text-light " style="font-style: italic;">A classic for a reason, plus I got to see them live!</p>
+            <div class="btn-group m-3 " role="group" aria-label="Basic example">
+                <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+                <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+                <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+                <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+                <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <div class="card bg-dark mx-auto mt-3" style="width: 18rem;">
+          <div class="card-header text-light h4">Kill This Love</div>
+          <img src="./assets/album6.png" class="card-img-top" alt="Album artwork">
+          <div class="card-body">
+            <h5 class="card-title text-light mt-1">Kill This Love</h5>
+            <h6 class="card-title text-light mb-4"><span class="text-warning">by</span> BlackPink</h6>
+            <a href="https://www.youtube.com/watch?v=2S24-y0Ij3Y&ab_channel=BLACKPINK" target="_blank" class="btn btn-primary bg-light border-dark text-dark">Play on &nbsp;<i class="fa-brands fa-youtube ml-2 fa-lg"></i></a>
+          </div>
+          <p class="card-text mx-4 text-light " style="font-style: italic;">A little bit too catchy... try... to... resist...</p>
+          <div class="btn-group m-3 " role="group" aria-label="Basic example">
+              <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+              <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+              <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+              <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+              <button type="button" disabled class="btn rounded-0 btn-secondary bg-dark border-dark"  style="pointer-events: none;"><i class="fa-regular fa-star"></i></i></button>
+          </div>
+      </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <div class="card bg-dark mx-auto mt-3" style="width: 18rem;">
+          <div class="card-header text-light h4">Cage The Elephant</div>
+          <img src="./assets/album7.jpg" class="card-img-top" alt="Album artwork">
+          <div class="card-body">
+            <h5 class="card-title text-light mt-1">Ain't No Rest For The Wicked</h5>
+            <h6 class="card-title text-light mb-4"><span class="text-warning">by</span> Cage the Elephant</h6>
+            <a href="https://www.youtube.com/watch?v=HKtsdZs9LJo&ab_channel=CageTheElephantVEVO" target="_blank" class="btn btn-primary bg-light border-dark text-dark">Play on &nbsp;<i class="fa-brands fa-youtube ml-2 fa-lg"></i></a>
+          </div>
+          <p class="card-text mx-4 text-light " style="font-style: italic;">Upbeat rock with slick lyrics.</p>
+          <div class="btn-group m-3 " role="group" aria-label="Basic example">
+              <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+              <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+              <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+              <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+              <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+          </div>
+      </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <div class="card bg-dark mx-auto mt-3" style="width: 18rem;">
+          <div class="card-header text-light h4">Tubthumper</div>
+          <img src="./assets/album8.jpg" class="card-img-top" alt="Album artwork">
+          <div class="card-body">
+            <h5 class="card-title text-light mt-1">Tubthumper</h5>
+            <h6 class="card-title text-light mb-4"><span class="text-warning">by</span> Chumbawamba</h6>
+            <a href="https://www.youtube.com/watch?v=2H5uWRjFsGc&ab_channel=ChumbawambaVEVO" target="_blank" class="btn btn-primary bg-light border-dark text-dark">Play on &nbsp;<i class="fa-brands fa-youtube ml-2 fa-lg"></i></a>
+          </div>
+          <p class="card-text mx-4 text-light " style="font-style: italic;">Listening to this feels like taking a trip back to the 90's</p>
+          <div class="btn-group m-3 " role="group" aria-label="Basic example">
+              <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+              <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+              <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+              <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+              <button type="button" disabled class="btn rounded-0 btn-secondary bg-dark border-dark" style="pointer-events: none;"><i class="fa-regular fa-star"></i></i></button>
+          </div>
+      </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <div class="card bg-dark mx-auto mt-3" style="width: 18rem;">
+        <div class="card-header text-light h4">Lamb of God</div>
+        <img src="./assets/album9.jpg" class="card-img-top" alt="Album artwork">
+        <div class="card-body">
+          <h5 class="card-title text-light mt-1">Laid to Rest</h5>
+          <h6 class="card-title text-light mb-4"><span class="text-warning">by</span> Lamb of God</h6>
+          <a href="https://www.youtube.com/watch?v=HL9kaJZw8iw&ab_channel=lambofgodVEVO" target="_blank" class="btn btn-primary bg-light border-dark text-dark">Play on &nbsp;<i class="fa-brands fa-youtube ml-2 fa-lg"></i></a>
+        </div>
+        <p class="card-text mx-4 text-light " style="font-style: italic;">Pure action from the beginning to the end. Exhilarating!</p>
+        <div class="btn-group m-3 " role="group" aria-label="Basic example">
+            <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+            <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+            <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+            <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+            <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+        </div>
+      </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <div class="card bg-dark mx-auto mt-3" style="width: 18rem;">
+        <div class="card-header text-light h4">1000 Nights</div>
+        <img src="./assets/album11.jpg" class="card-img-top" alt="Album artwork">
+        <div class="card-body">
+          <h5 class="card-title text-light mt-1">1000 Nights</h5>
+          <h6 class="card-title text-light mb-4"><span class="text-warning">by</span> FRENDSHIP</h6>
+          <a href="https://www.youtube.com/watch?v=2HnaFtTV1wA&ab_channel=FRENSHIPVEVO" target="_blank" class="btn btn-primary bg-light border-dark text-dark">Play on &nbsp;<i class="fa-brands fa-youtube ml-2 fa-lg"></i></a>
+        </div>
+        <p class="card-text mx-4 text-light " style="font-style: italic;">It feels like a long and drawn out heartbreak. Very emotional...</p>
+        <div class="btn-group m-3 " role="group" aria-label="Basic example">
+          <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+          <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+          <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+          <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+          <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+        </div>
+      </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <div class="card bg-dark mx-auto mt-3" style="width: 18rem;">
+        <div class="card-header text-light h4">THE RESISTANCE</div>
+        <img src="./assets/album12.jpg" class="card-img-top" alt="Album artwork">
+        <div class="card-body">
+          <h5 class="card-title text-light mt-1">Unnatural Selection</h5>
+          <h6 class="card-title text-light mb-4"><span class="text-warning">by</span> Muse</h6>
+          <a href="https://www.youtube.com/watch?v=IKcYJ68UhHE&ab_channel=MrMuseLyrics" target="_blank" class="btn btn-primary bg-light border-dark text-dark">Play on &nbsp;<i class="fa-brands fa-youtube ml-2 fa-lg"></i></a>
+        </div>
+        <p class="card-text mx-4 text-light " style="font-style: italic;">It feels like a long and drawn out heartbreak. Very emotional...</p>
+        <div class="btn-group m-3 " role="group" aria-label="Basic example">
+          <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+          <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+          <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+          <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+          <button type="button" class="btn rounded-0 btn-secondary bg-dark text-warning border-dark" style="pointer-events: none;"><i class="fa-solid fa-star"></i></i></button>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- MY FAVOURITE ALBUM SECTION -->
+    <div id="myFavouriteAlbum" class="relative pt-5 navbarLink">
+        <h2 class="mt-5 display-3 text-center text-light bg-dark pt-2 pb-3">My Favourite Album</h1>
+        <button class="btn btn-primary collapse-section bg-warning border-0" data-toggle="collapse" data-target="#myFavouriteAlbumDiv">Show / Hide</button>
+    </div>
+    <div class="mt-5 mx-auto collapse show" id="myFavouriteAlbumDiv">
+        <div class="card col-sm-12 col-md-10 col-lg-8 col-xl-7 p-0 mx-auto">
+            <img class="card-img" src="assets/album9.jpg" alt="Ashes of the Wake album cover">
+            <div class="card-body bg-dark text-light">
+              <h5 class="card-title h1">Ashes of the Wake - Lamb of God</h5>
+              <p class="card-text font-italic">&nbsp;&nbsp;&nbsp;"Ashes of the Wake is the fourth studio album and first major-label release by American heavy metal band Lamb of God, released in 2004 via Epic Records. The album was inspired by the events that took place during the war in Iraq with songs such as "Ashes of the Wake" (which includes snippets of former Marine Staff Sergeant Jimmy Massey in an interview after his return from the Iraq War)"</p>
+              <p class="card-text">My Thoughts: <br>&nbsp;&nbsp;&nbsp;From top to bottom Ashes of the Wake is a hurtling beast of an album. My favourite jams from this list are Laid to Rest, a heart thumping fist pumping sprint through chaos, and Blood Of The Scribe which invokes a sense of swelling heat and frustration soothed only by the incredible work of Chris Adler (drummer) before the hammer falls, the tension snaps and you're left with adrenalin coursing through your veins.</p>
+              <a target="_blank" href="https://www.youtube.com/watch?v=sbobZULzNBM&list=PLb_fTldsXf__jdADibeQVjtPk-bADFtef&ab_channel=LambofGod-Topic" class="btn btn-primary bg-dark text-light border-light rounded mt-3 mb-3">Play on &nbsp;<i class="fa-brands fa-youtube ml-2 fa-lg"></i></a>
+            </div>
+            <table class="table table-dark table-striped mb-0 table-hover">
+                <thead class="">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Artist</th>
+                    <th scope="col">Duration</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Laid to Rest</td>
+                    <td>Lamb of God</td>
+                    <td>3:50</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Hourglass</td>
+                    <td>Lamb of God</td>
+                    <td>4:00</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Now You've Got Something to Die For</td>
+                    <td>Lamb of God</td>
+                    <td>3:39</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>The Faded Line</td>
+                    <td>Lamb of God</td>
+                    <td>4:37</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>Omerta</td>
+                    <td>Lamb of God</td>
+                    <td>4:45</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">6</th>
+                    <td>Blood Of The Scribe</td>
+                    <td>Lamb of God</td>
+                    <td>4:23</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">7</th>
+                    <td>One Gun</td>
+                    <td>Lamb of God</td>
+                    <td>3:59</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">8</th>
+                    <td>Break You</td>
+                    <td>Lamb of God</td>
+                    <td>3:35</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">9</th>
+                    <td>What I've Become</td>
+                    <td>Lamb of God</td>
+                    <td>3:28</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">10</th>
+                    <td>Ashes of the Wake</td>
+                    <td>Lamb of God</td>
+                    <td>5:45</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">11</th>
+                    <td>Remorse Is for the Dead</td>
+                    <td>Lamb of God</td>
+                    <td>5:40</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">12</th>
+                    <td>Another Nail For Your Coffin</td>
+                    <td>Lamb of God</td>
+                    <td>4:37</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">13</th>
+                    <td>Laid to Rest - Pre-Production Demo</td>
+                    <td>Lamb of God</td>
+                    <td>3:47</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">14</th>
+                    <td>Ashes of the Wake - Pre-Production Demo</td>
+                    <td>Lamb of God</td>
+                    <td>5:32</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">15</th>
+                    <td>Remorse Is for the Dead - Pre-Production Demo</td>
+                    <td>Lamb of God</td>
+                    <td>4:20</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+    <!-- HALL OF SHAME SECTION -->
+    <div id="hallOfShame" class="relative pt-5 navbarLink">
+        <h3 class="mt-5 display-3 text-center text-light bg-dark pt-2 pb-3">Hall of Shame</h1>
+        <button class="btn btn-primary collapse-section bg-warning border-0" data-toggle="collapse" data-target="#hallOfShameDiv">Show / Hide</button>
+    </div>
+    <div id="hallOfShameDiv" class="mt-5 mx-auto collapse show">
+      <div class="accordion mt-0 col-sm-12 col-md-10 col-lg-8 col-xl-7 bg-dark mx-auto" id="accordionExample">
+        <div class="accordion-header"><h4 class="mt-1 mb-0 text-center text-light pt-2 pb-3">Open if you dare...</h4></div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header bg-dark text-light" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              For deaf ears only
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body bg-dark text-light">
+              <img src="assets/album2.png" style="display: block; margin: 2rem auto;">
+              <p><strong>Yellow</strong> by Coldplay</p>
+              <p>Nails on a chalk board, that inconsiderate person slurping coffee or someone who chews with their mouth open... this song is like that.</p>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="accordion-item ">
+          <h2 class="accordion-header bg-dark text-light" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Your ears will never forgive you
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body bg-dark text-light">
+              <img src="assets/album4.jpg" style="display: block; margin: 2rem auto;">
+              <p><strong>I don't feel like dancing</strong> by Scissor Sisters</p>
+              <p>Oh gosh where do I start with this one? Imagine the wet dog smell, a rogue pixel on your screen, tangled earphone wires, and being stuck in bumper-to-bumper traffic in song form.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header bg-dark text-light" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Sucker for punishment aren't you?
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div class="accordion-body  bg-dark text-light">
+              <img src="assets/album5.png" style="display: block; margin: 2rem auto;">
+              <p><strong>Friday</strong> by Rebecca Black</p>
+              <p>Friday usually evokes joy and a feeling of accomplishment. So it is odd that this 'song' is called Friday because it feels like a Monday. A universally despised contraption of frustration.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAPESTRY OF TAPE SECTION -->
+    <div id="tapestryOfTape" class="relative pt-5 navbarLink">
+        <h3 class="mt-5 display-3 text-center text-light bg-dark pt-2 pb-3">Tapestry of Tape</h1>
+        <button class="btn btn-primary collapse-section bg-warning border-0" data-toggle="collapse" data-target="#tapestryOfTapeDiv">Show / Hide</button>
+    </div>
+    <div class="container pt-5 collapse show" id="tapestryOfTapeDiv" style="width: 100%; max-width: 1200px;">
+      <div class="row">
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap1.jpg" class="img-fluid">
+        </div>
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap2.jpg" class="img-fluid">
+        </div>
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap3.jpg" class="img-fluid">
+        </div>
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap4.jpg" class="img-fluid">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap5.jpg" class="img-fluid">
+        </div>
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap6.jpg" class="img-fluid">
+        </div>
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap7.jpg" class="img-fluid">
+        </div>
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap8.jpg" class="img-fluid">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap9.jpg" class="img-fluid">
+        </div>
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap10.jpg" class="img-fluid">
+        </div>
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap11.jpg" class="img-fluid">
+        </div>
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap12.jpg" class="img-fluid">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap13.jpg" class="img-fluid">
+        </div>
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap14.jpg" class="img-fluid">
+        </div>
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap15.jpg" class="img-fluid">
+        </div>
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap16.jpg" class="img-fluid">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap17.jpg" alt="Tapestry Image" class="img-fluid">
+        </div>
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap18.jpg" alt="Tapestry Image" class="img-fluid">
+        </div>
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap19.jpg" alt="Tapestry Image" class="img-fluid">
+        </div>
+        <div class="col-3 p-0 image-wrapper">
+          <img src="./assets/tapestry/tap20.jpg" alt="Tapestry Image" class="img-fluid">
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="m-0 bg-dark w-auto">
+        <footer >
+            <p class="text-light text-center my-5 p-4" style="font-weight: normal;">Gareth's favourite <i class="fa-solid fa-music text-warning"></i></p>
+        </footer>
+    </div> 
+
+    <!-- JAVASCRIPT SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function () {
+        $('#myNavbar a').click(function(){
+          $('.navbar-collapse').collapse('hide');
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function() {
+        const headingLinks = document.querySelectorAll('.navbarLink');
+        const navbarLinks = document.querySelectorAll('.navbar-nav a');
+    
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            const sectionId = entry.target.getAttribute('id');
+            if (entry.isIntersecting) {
+              navbarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                  link.classList.add('active');
+                }
+              });
+            }
+          });
+        }, { threshold: 0.5 });
+    
+        headingLinks.forEach(section => {
+          observer.observe(section);
+        });
+      });
+    </script>
+    
+  </body>
+</html>

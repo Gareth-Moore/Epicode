@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <title>Unit 3, D4</title>
+  </head>
+
+  <body>
+    <!-- screen width display / delete later -->
+    <div
+      id="screen-size-display"
+      style="
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: rgb(231, 231, 231);
+        color: red;
+        font-size: 1.4rem;
+      "
+    ></div>
+
+    <header>
+      <!-- Navbar -->
+      <div class="container-fluid bg-light">
+        <nav
+          class="navbar navbar-expand-md navbar-light bg-light pt-0 pb-0 pl-5 pr-5 container-fluid"
+          style="
+            font-family: 'Pacifico', cursive;
+            max-width: 1200px;
+            margin: 0 auto;
+          "
+        >
+          <a href="#" class="navbar-brand p-3"
+            ><img src="./assets/logo.png" alt="Logo" style="width: 75px"
+          /></a>
+          <div
+            class="navbar-collapse collapse align-self-end justify-content-end h5"
+          >
+            <ul class="navbar-nav">
+              <li class="nav-item ml-2">
+                <a href="" class="nav-link">Weekly Deals</a>
+              </li>
+              <li class="nav-item ml-2">
+                <a href="" class="nav-link">Summer Deals</a>
+              </li>
+              <li class="nav-item ml-2">
+                <a href="" class="nav-link">Daily Deals</a>
+              </li>
+              <li class="nav-item ml-2">
+                <a href="" class="nav-link">Last Minute</a>
+              </li>
+              <li class="nav-item ml-2">
+                <a href="" class="nav-link">Feedback</a>
+              </li>
+              <li class="nav-item ml-2">
+                <a href="" class="nav-link">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Jumbotron -->
+    </header>
+
+    <main>
+      <!-- Deals of the week  -->
+
+      <!-- Welcome Summer  -->
+
+      <!-- Deal of the day  -->
+
+      <!-- Last minute -->
+
+      <!-- Testimonials -->
+    </main>
+
+    <footer>
+      <!-- Footer -->
+    </footer>
+  </body>
+
+  <!-- Bootstrap JS, JSQUERY AND POPPER  -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+    crossorigin="anonymous"
+  ></script>
+  <script src="./script.js"></script>
+</html>
+
+<!-- BRIEF
+
+    Make a travel agency website:
+
+    1. Add Navbar linking to all page sections
+    2. Add logo to Navbar
+    3. Add Jumbotron with Name and slogan 
+    4. Add 'Deal of the week' section. Display (cards probably?) 4 @xl / 3 @md / 2 @sm destinations per row (NO amount of destinations required)
+    5. Add 'Welcome Summer' section to propose 6 destinations. Per row: 6 @xl / 3 @md / 2 @sm. Add large shadow. See 'Extras' point 3.
+    6. Add 'Deal of the day'. Picture 2/3 and text (name, dates, price and short description) 1/3 of page (horizontal). Should not display at all @sm screen size.
+    7. Add 'Last minute' containing cards of pictures of the destinations (not sure what they want here but you could add a thing about these deals are cheap because they leave like in a few days? Also animate them or do something visually interesting. Just and idea.q)
+    8. Add 'Testimonial section' with fake customer feedback
+    9. Add footer with company information and 'Contact Us' button.
+
+    Extras
+
+    1. Create a button to expand/collapse each section
+    2. Create a modal for inputting email and a message. Modal is show when the 'Contact Us' button is clicked.
+    3. Create a JS function that add's a 'HOT' badge to all the 'Welcome Summer' offers
+    4. Create a JS function to delete all the cards from the page
+
+    Let's get started:
+
+    Page sections:
+    Header
+        Navbar
+        Jumbotron
+    Main 
+        Deals of the week 
+            > 8x portrait images
+        Welcome Summer 
+            > 6x 1:1 images
+        Deal of the day 
+            > 1x large picture
+        Last minute
+            > 4x 1:1 images
+        Testimonials
+    Footer
+
+    Things to keep in mind:
+    > Use bootstrap cards only for the 'last minute' section if it's possible/feasible.
+    > Each section needs to expand and collapse so wrap them nicely
+    > The Navbar is going to contain a lot of sections/links and also a 'contact us' link that opens a modal
+    > Company information: Contact info (phone, email, social media), About us, Destinations, Services, Testimonials, Newsletter, Careers, Terms & Conditions, FAQ, Awards and Certifications
+
+    Fake Testimonials:
+        "I had an amazing experience with Go Travel! They made the booking process easy and stress-free. The accommodations were top-notch and the itinerary was well-planned. I can't wait to book my next trip with them!"
+    Jane S.
+
+    "Go Travel provided an unforgettable vacation experience. Their knowledgeable staff helped us choose the perfect destination, and we couldn't have been happier with our choice. We will definitely be booking with them again in the future."
+    Michael and Sarah L.
+
+    "I've been using Go Travel for years and they never disappoint. From the customer service to the accommodations, everything is always top-notch. I recommend them to all of my friends and family!"
+    David B.
+
+    "I recently booked a trip with Go Travel and I couldn't be happier with the experience. Their attention to detail and personalized service made me feel like a VIP. I will definitely be using them again for all of my future travel plans."
+    Emily W.
+
+    Images:
+      <img src="./assets/day1.jpg" alt="Day 1" />
+      <img src="./assets/minute1.jpg" alt="Minute 1" />
+      <img src="./assets/minute2.jpg" alt="Minute 2" />
+      <img src="./assets/minute3.jpg" alt="Minute 3" />
+      <img src="./assets/minute4.jpg" alt="Minute 4" />
+      <img src="./assets/week1.jpg" alt="Week 1" />
+      <img src="./assets/week2.jpg" alt="Week 2" />
+      <img src="./assets/week3.jpg" alt="Week 3" />
+      <img src="./assets/week4.jpg" alt="Week 4" />
+      <img src="./assets/week5.jpg" alt="Week 5" />
+      <img src="./assets/week6.jpg" alt="Week 6" />
+      <img src="./assets/week7.jpg" alt="Week 7" />
+      <img src="./assets/week8.jpg" alt="Week 8" />
+      <img src="./assets/welcome1.jpg" alt="Welcome 1" />
+      <img src="./assets/welcome2.jpg" alt="Welcome 2" />
+      <img src="./assets/welcome3.jpg" alt="Welcome 3" />
+      <img src="./assets/welcome4.jpg" alt="Welcome 4" />
+      <img src="./assets/welcome5.jpg" alt="Welcome 5" />
+      <img src="./assets/welcome6.jpg" alt="Welcome 6" />
+-->

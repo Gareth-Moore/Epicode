@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)file:///C:/Users/gccsm/AppData/Local/Temp/Temp1_code-17.zip/xmlhttprequest.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>title</title>
+</head>
+
+<body>
+  <p id="coctailName">Brigadier</p>
+  <button id="btn">Update Coctail</button>
+
+  <script>
+    const URL_ENDPOINT = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+    const paragraph = document.getElementById('coctailName');
+    const button = document.getElementById('btn');
+
+    const request = new XMLHttpRequest();
+
+    const requestLoadCallback = function () {
+      if (request.status !== 200) {
+        paragraph.innerText = 'there was an error!'
+        return;
+      }
+
+      const responseObject = JSON.parse(request.response);
+      const coctailName = responseObject.drinks[0].strDrink;
+
+      paragraph.innerText = coctailName;
+
+      // this is logged second
+      console.log('Response handled successfully!')
+    }
+
+    request.onload = requestLoadCallback;
+
+    const btnClickCallback = function () {
+      // third option is called async
+      // if it is set to false - the program execution will freeze
+      // until the response came back and was handled
+      request.open('GET', URL_ENDPOINT, true);
+      request.setRequestHeader('accept', 'application/json');
+      // if request is async - the program does not stop here
+      
+      request.send();
+      paragraph.innerText = 'Loading...';
+
+
+      // this is logged first
+      console.log('btnClickCallback finished');
+    };
+
+    button.addEventListener('click', btnClickCallback);
+  </script>
+
+
+
+</body></html>

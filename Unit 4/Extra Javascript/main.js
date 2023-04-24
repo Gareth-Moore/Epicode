@@ -34,8 +34,8 @@
 // }
 
 const showPageButton = document.querySelector("#show-page-btn");
-const collapseToLeft = document.querySelector(".landing-description");
-const collapseToRight = document.querySelector(".landing-hero");
+const collapseToLeft = document.querySelector(".curtain-description");
+const collapseToRight = document.querySelector(".curtain-hero");
 window.onload = function () {};
 
 showPageButton.addEventListener("click", (e) => {

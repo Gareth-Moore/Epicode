@@ -1,3 +1,30 @@
+/* Fonts and default styling */
+
+@font-face {
+  font-family: "Cartoon";
+  src: url("./assets/CartoonFont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  --white: #ffffff;
+  --black: #000000;
+
+  --orange-light: #f38900;
+  --orange-dark: #cf6704;
+
+  --grey-light: #606060;
+  --grey-dark: #464648;
+
+  --torquoise-light: #01bfa5;
+  --torquoise-dark: #01957d;
+
+  --blue-light: #039be6;
+  --blue-dark: #4568ac;
+  --blue-very-dark: #3d4e79;
+}
+
 html,
 body {
   height: 100%;
@@ -11,6 +38,15 @@ body {
 }
 
 /* Curtain / Overlay CSS */
+
+h1 {
+  text-align: center;
+  padding-bottom: 5rem;
+  font-family: "Cartoon", sans-serif;
+  color: var(--white);
+  font-size: 6rem;
+  transform: rotate(-10deg);
+}
 
 #show-page-btn {
   position: absolute;
@@ -32,14 +68,44 @@ body {
   z-index: 100;
 }
 
+.curtain-description {
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(250deg, var(--orange-light), var(--orange-dark));
+}
+
+.curtain-description p {
+  width: 70%;
+  text-align: center;
+}
+
+.curtain-hero {
+  background: linear-gradient(157deg, var(--blue-light) 70%, white 70%, white);
+}
+
+.curtain-hero-image {
+  height: 100%;
+  background: #c5e5d500 url("./assets/logo.png") no-repeat center left;
+  background-size: cover;
+  background-position-y: 1rem;
+}
+
+/* Main content page CSS */
+
 #page-content {
   position: relative;
   z-index: 1;
 }
 
-.landing-description {
-  background-color: #f9ccca;
+.products-container {
+  background-color: var(--grey-light);
 }
+
+.cart-container {
+  background-color: #fff2cc;
+}
+
+/* Animation classes */
 
 .x-collapse-to-left {
   height: auto;
@@ -61,47 +127,4 @@ body {
 
 .x-collapse-to-right.collapsed {
   transform: translateX(100%);
-}
-
-.landing-hero-image {
-  height: 100%;
-  background: #c5e5d5 url("./assets/logo.svg") no-repeat center left;
-  background-size: cover;
-}
-
-/* Main page CSS */
-
-.products-container {
-  background-color: #aed6f1;
-}
-
-.cart-container {
-  background-color: #fff2cc;
-}
-@font-face {
-  font-family: "Cartoon";
-  src: url("./assets/CartoonFont.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* 
-
-    Colour Palette?
-    f38900 orange light
-    cf6704 orange dark
-
-    606060 grey light
-    464648 grey dark
-
-    01bfa5 torquoise light
-    01957d torquoise dark
-
-    039be6 blue light
-    4568ac blue dark
-    3d4e79 bue very dark
-*/
-
-body {
-  font-family: "Cartoon", sans-serif;
 }

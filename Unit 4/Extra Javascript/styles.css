@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "Cartoon";
+  src: url("./assets/CartoonFont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 
+
+    Colour Palette?
+    f38900 orange light
+    cf6704 orange dark
+
+    606060 grey light
+    464648 grey dark
+
+    01bfa5 torquoise light
+    01957d torquoise dark
+
+    039be6 blue light
+    4568ac blue dark
+    3d4e79 bue very dark
+*/
+
+body {
+  font-family: "Cartoon", sans-serif;
+}

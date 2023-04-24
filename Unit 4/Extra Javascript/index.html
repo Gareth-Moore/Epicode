@@ -7,6 +7,24 @@
     <link rel="icon" href="./assets/myIcon.png" />
     <link rel="stylesheet" href="./styles.css" />
     <title>Cool Cody's Collection</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <title>Cool Cody's Hand-me-downs!</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="./assets/myIcon.png" type="image/png" />
   </head>
   <body>
     <img src="./assets/logo.svg" style="width: 500px" />
@@ -20,5 +38,72 @@
     <div style="width: 100px; height: 100px; background-color: #3d4e79"></div>
     <div style="width: 100px; height: 100px; background-color: #4568ac"></div>
     <div style="width: 100px; height: 100px; background-color: #039be6"></div>
+
+  <body class="overflow-hidden">
+    <button id="show-page-btn" type="button">Let's go shopping!</button>
+
+    <div id="curtain" class="container-fluid m-0 p-0">
+      <div class="row m-0 p-0">
+        <div
+          class="col-6 landing-description x-collapse-to-left d-flex justify-content-center flex-column"
+        >
+          <h1>Cool Cody's <br />Collection!</h1>
+          <p>
+            Cool Cody's taken some time out from carving up some gnarly peaks to
+            bring you some sick merch! <br />Some of which may even be useful?!
+            Go check it out!
+          </p>
+        </div>
+        <div class="col-6 landing-hero x-collapse-to-right p-0">
+          <div class="landing-hero-image w-100"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="page-content" class="container-fluid m-0 p-0">
+      <div class="row m-0 p-0">
+        <div class="col-7 offset-1 products-container">hello</div>
+        <div class="col-3 cart-container">hello</div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="main.js"></script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
+
+<!-- 
+  > - The child operator. It is used to create a parent-child relationship between two elements. For example, div>p creates a div element that contains a p element as a child.
++ - The sibling operator. It is used to create siblings of the previous element. For example, div+p creates a div element, followed by a p element as a sibling of the div.
+^ - The climb-up operator. It is used to move up the hierarchy of elements. For example, div>ul>li^ creates a div element with a child ul element that contains a li element, and then moves up one level to create another li element that is a sibling of the first li.
+* - The multiplication operator. It is used to create multiple copies of an element. For example, li*3 creates three li elements.
+() - The grouping operator. It is used to group elements together. For example, (div>p)+ul>li*3 creates a div element that contains a p element, followed by a ul element that contains three li elements.
+[] - The attribute operator. It is used to add attributes to an element. For example, a[href=#] creates an a element with an href attribute set to #.
+# - The ID operator. It is used to set the id attribute of an element. For example, div#my-div creates a div element with an id attribute set to my-div.
+. - The class operator. It is used to set the class attribute of an element. For example, div.my-class creates a div element with a class attribute set to my-class.
+$ - The numbering operator. It is used to create a sequence of numbered elements. For example, ul>li.item$*3 creates a ul element that contains three li elements with class names item1, item2, and item3, respectively.
+@ - The text operator. It is used to add text content to an element. For example, a[href=#]@Click me! creates an a element with an href attribute set to # and the text content "Click me!".
+{} and $ - The expression operator. It is used to evaluate expressions and insert their results into an abbreviation. For example, div{$1}*{$2} creates a div element with text content that is dynamically generated based on two input values.
+^ - The fuzzy search operator. It is used to search for elements using a fuzzy search algorithm. For example, li^ matches the first li element that is a sibling of the current element, regardless of its position in the document tree.
+* - The repeated text operator. It is used to repeat a text string a certain number of times. For example, p{Lorem ipsum}*3 creates three p elements, each with the text "Lorem ipsum".
+$ - The placeholder operator. It is used to define a placeholder that can be replaced with custom content. For example, div>${1:content} creates a div element with a placeholder that can be replaced with custom content.
+# - The counter operator. It is used to create a counter that can be incremented or decremented. For example, div.item-$*3 creates three div elements with class names "item-1", "item-2", and "item-3", respectively.
+
+ -->

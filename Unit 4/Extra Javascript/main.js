@@ -36,7 +36,7 @@
 
 const showPageButton = document.querySelector('#show-page-btn')
 const collapseToLeft = document.querySelector('.landing-description')
-const collapseToRight = document.querySelector('.landing-hero-image')
+const collapseToRight = document.querySelector('.landing-hero')
 window.onload = function () {
 }
 

@@ -1,49 +1,27 @@
 "use strict";
 
-// DISABLED TO STOP SPAMMING API CALLS
-// fetch("https://dummyjson.com/products")
-//   .then((res) => res.json())
-//   .then((data) => {
-//     console.log(data);
-//     return data;
-//   })
-//   .then((data) => data.products)
-//   .then((products) => {
-//     getProducts(products);
-//     const newHTMLElement = document.createElement("div");
-//     let newHTMLContent = "";
+const collapseCurtainButton = document.querySelector("#curtain-button");
+const curtainText = document.querySelector(".curtain-text");
+const curtainHero = document.querySelector(".curtain-hero");
+const curtain = document.querySelector("#curtain");
 
-//     // loop for creating HTML elements
-//     products.forEach((item) => {
-//       newHTMLContent += `
-//         <li>Product name: ${item.title}</li>
-//         <img src="${item.images[0]}" alt="Image of ${products.title}">
-//         `;
-//     });
+// Automatically open 'curtain' - DELETE LATER
+// window.onload = function () {
+//   curtainHero.classList.add("collapsed");
+//   curtainText.classList.add("collapsed");
+// };
 
-//     // append new HTML elements
-//     newHTMLElement.innerHTML = newHTMLContent;
-//     const main = document.querySelector("main");
-//     main.appendChild(newHTMLElement);
-//   })
-//   .catch((err) => console.log(err));
-
-// let products = {};
-// function getProducts(onj) {
-//   products = onj;
-// }
-
-const showPageButton = document.querySelector("#show-page-btn");
-const collapseToLeft = document.querySelector(".curtain-description");
-const collapseToRight = document.querySelector(".curtain-hero");
-window.onload = function () {};
-
-showPageButton.addEventListener("click", (e) => {
-  showPageButton.classList.add("fade");
-  collapseToLeft.classList.add("collapsed");
-  collapseToRight.classList.add("collapsed");
+// Uncomment to enable button click to remove 'curtain'
+collapseCurtainButton.addEventListener("click", (e) => {
+  curtainHero.classList.add("collapsed");
+  curtainText.classList.add("collapsed");
 });
 
-showPageButton.addEventListener("transitionend", () => {
-  showPageButton.remove();
+curtainText.addEventListener("transitionend", () => {
+  curtainHero.remove();
+  curtain.remove();
+  const getBody = document.querySelector("body");
+  const getHtml = document.querySelector("html");
+  getBody.classList.remove("overflow-hide");
+  getHtml.classList.remove("overflow-hide");
 });

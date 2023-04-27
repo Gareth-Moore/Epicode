@@ -1,11 +1,15 @@
-/* Fonts and default styling */
+/* Defaults, fonts and colours */
 
 @font-face {
   font-family: "Cartoon";
-  src: url("./assets/CartoonFont.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+  src: url("./assets/CartoonFont.ttf");
 }
+
+/* 
+    Font Families 
+        'Quicksand'
+        'Cartoon'
+*/
 
 html {
   --white: #ffffff;
@@ -17,6 +21,7 @@ html {
   --grey-light: #606060;
   --grey-dark: #464648;
 
+  --torquoise-very-light: #00d6b9;
   --torquoise-light: #01bfa5;
   --torquoise-dark: #01957d;
 
@@ -28,103 +33,391 @@ html {
 html,
 body {
   height: 100%;
-  margin: 0;
-  padding: 0;
+  font-family: "Quicksand", sans-serif !important;
 }
 
-.container-fluid,
-.row {
+.overflow-hide {
+  overflow: hidden;
+}
+
+/* Curtain */
+
+#curtain,
+#curtain-row {
   height: 100%;
-}
-
-/* Curtain / Overlay CSS */
-
-h1 {
-  text-align: center;
-  padding-bottom: 5rem;
-  font-family: "Cartoon", sans-serif;
-  color: var(--white);
-  font-size: 6rem;
-  transform: rotate(-10deg);
-}
-
-#show-page-btn {
-  position: absolute;
-  z-index: 200;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  transition: opacity 1.3s ease-in-out, scale 1.3 ease-in-out;
-}
-
-#show-page-btn.fade {
-  transform: opacity(0) scale(1.3);
 }
 
 #curtain {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 19;
+}
+
+/* Curtain > button */
+
+#curtain-button {
+  display: block;
+  margin: 0 auto;
+  background: linear-gradient(
+    0deg,
+    var(--torquoise-dark) 1%,
+    var(--torquoise-light) 99%,
+    var(--torquoise-dark)
+  );
+  border: none;
+  outline: none;
+  padding: 0.5rem 2rem;
+  border-radius: 3rem;
+  color: var(--white);
+  transition: transform 0.15s ease-in;
+}
+
+#curtain-button:hover,
+#curtain-button:focus {
+  box-shadow: 0 0 10px var(--white);
+  /* transform: scale(1.05); Caused issues with 'transitionend' in JS */
+}
+
+#curtain-button:active {
+  border: none;
+  outline: none;
+  /* transform: scale(0.95); Caused issues with 'transitionend' in JS */
+  background-color: #00d6b9;
+}
+
+/* Curtain > text */
+
+.curtain-text {
+  z-index: 20;
+  background: linear-gradient(130deg, var(--orange-dark), var(--orange-light));
+}
+
+.curtain-heading {
+  width: 80%;
+  margin: 0 auto;
+  font-family: "Cartoon", sans-serif;
+  color: white;
+  transform: rotate(352deg);
+  font-size: 15vw;
+  line-height: 15vw;
+}
+
+.curtain-heading span {
+  font-weight: bold;
 }
 
 .curtain-description {
-  display: flex;
-  justify-content: center;
-  background: linear-gradient(250deg, var(--orange-light), var(--orange-dark));
-}
-
-.curtain-description p {
-  width: 70%;
+  color: var(--white);
+  width: 80%;
+  margin: 4rem auto 3rem auto;
+  font-weight: 300;
+  line-height: 1.2rem;
+  letter-spacing: 0.05rem;
+  font-size: 0.9rem;
   text-align: center;
 }
 
+@media screen and (min-width: 768px) {
+  .curtain-heading {
+    font-size: min(7.5vw, 124px);
+    line-height: min(7.5vw, 127px);
+  }
+}
+
+/* Curtain > image */
+
 .curtain-hero {
-  background: linear-gradient(157deg, var(--blue-light) 70%, white 70%, white);
+  background: linear-gradient(
+    155deg,
+    var(--blue-dark) 15%,
+    var(--blue-light) 65%,
+    var(--white) 65%,
+    var(--white)
+  );
+
+  z-index: 18;
 }
 
-.curtain-hero-image {
-  height: 100%;
-  background: #c5e5d500 url("./assets/logo.png") no-repeat center left;
-  background-size: cover;
-  background-position-y: 1rem;
-}
+/* curtain > animations */
 
-/* Main content page CSS */
-
-#page-content {
-  position: relative;
-  z-index: 1;
-}
-
-.products-container {
-  background-color: var(--grey-light);
-}
-
-.cart-container {
-  background-color: #fff2cc;
-}
-
-/* Animation classes */
-
-.x-collapse-to-left {
+.collapse-to-right {
   height: auto;
   overflow: hidden;
   transform-origin: left;
-  transition: transform 1.3s ease-out;
+  transition: transform 1.1s ease-in;
 }
 
-.x-collapse-to-left.collapsed {
+.collapse-to-right.collapsed {
   transform: translateX(-100%);
 }
 
-.x-collapse-to-right {
+.collapse-to-left {
   height: auto;
   overflow: hidden;
   transform-origin: right;
-  transition: transform 1.3s ease-out;
+  transition: transform 1.1s ease-in;
 }
 
-.x-collapse-to-right.collapsed {
+.collapse-to-left.collapsed {
   transform: translateX(100%);
+}
+
+/* Curtain END */
+
+/* NavBar */
+
+/* define the animation */
+@keyframes slide-out {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    top: 15px;
+    left: 25px;
+  }
+  100% {
+    top: 5px;
+    left: -70px;
+  }
+}
+
+/* apply the animation */
+#coolCodyImg:hover {
+  animation-name: slide-out;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+/* Animate page name/title */
+@keyframes shake {
+  0% {
+    transform: rotate(3deg) translateX(5px);
+  }
+  20% {
+    transform: rotate(-3deg) translateX(-5px);
+  }
+  40% {
+    transform: rotate(3deg) translateX(5px);
+  }
+  60% {
+    transform: rotate(-3deg) translateX(-5px);
+  }
+  80% {
+    transform: rotate(3deg) translateX(5px);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+.navbar-brand:hover {
+  animation: shake 0.4s;
+}
+
+#navbar-container {
+  background: linear-gradient(90deg, var(--orange-dark), var(--orange-light));
+}
+
+#mySVG {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.15s ease-in-out;
+}
+
+#mySVG:hover {
+  transform: scale(1.2);
+}
+
+/* cool to know */
+/* #mySVG:hover path {
+  stroke: var(--torquoise-light);
+} */
+
+@media screen and (min-width: 768px) {
+  .navbar-brand {
+    font-size: 2.5rem !important;
+  }
+}
+
+/* Products */
+
+.product-container {
+  position: relative;
+  width: fit-content;
+  margin: 9rem auto 0 auto;
+}
+
+.product-container > div:last-of-type {
+  padding-bottom: 3rem;
+}
+
+@media screen and (min-width: 1200px) {
+  .product-container {
+    padding-left: 3rem;
+    border-left: 1px solid lightgrey;
+    padding-right: 3rem;
+    border-right: 1px solid lightgrey;
+  }
+}
+
+/* Products > Card */
+
+.product-card {
+  margin-bottom: 3rem;
+  width: 300px;
+  height: 600px;
+  overflow: hidden;
+  border: 1px solid lightgrey;
+}
+
+.product-card-content {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.product-card-content .title {
+  padding-left: 0.2rem;
+  font-size: 1.3rem;
+}
+
+.product-card-content .rating span {
+  color: var(--grey-light);
+  font-size: 0.7rem;
+}
+
+.product-card-content .description {
+  font-size: 0.7rem;
+  margin: 0.3rem;
+  max-height: 50px;
+  max-width: 307px;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.product-card-content .rating-star-img {
+  width: 20px;
+  height: 20px;
+  margin-right: -0.25rem;
+}
+
+.product-card-content .price-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  margin-right: 1.7rem;
+}
+
+.product-card-content .price-container p {
+  margin: 0;
+}
+
+.product-card-content .price {
+  color: var(--orange-light);
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.product-card-content .discount {
+  font-size: 0.7rem;
+  line-height: 0.4rem;
+  color: var(--grey-light);
+}
+
+.product-card-content .action-buttons {
+  color: var(--grey-dark);
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.product-card-content button {
+  padding: 0.3rem 1.2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .product-card-content button {
+    padding: 0.3rem 2.2rem;
+  }
+}
+.product-card-content .action-buttons .more-info {
+  border: 1px solid lightgray;
+  background-color: rgba(211, 211, 211, 0.151);
+}
+
+.product-card-content .action-buttons .add-to-cart {
+  border: 1px solid lightgray;
+  background-color: var(--torquoise-very-light);
+  color: white;
+}
+
+.product-card-content .action-buttons button:hover {
+  background-color: white;
+  color: var(--torquoise-very-light);
+}
+
+.product-card-image {
+  background-color: rgba(211, 211, 211, 0.151);
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+}
+
+.product-card-image img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.product-card-content {
+  padding: 1rem;
+  width: 100%;
+  height: 300px;
+}
+
+/* Products > Card > Landscape */
+
+@media screen and (min-width: 768px) {
+  .product-card {
+    display: flex;
+    width: 600px;
+    height: 250px;
+  }
+  .product-card-image {
+    width: 250px;
+    height: 250px;
+    border: none;
+    border-right: 1px solid lightgray;
+  }
+
+  .product-card-content {
+    width: 350px;
+    height: 250px;
+  }
+}
+
+/* Footer */
+
+footer {
+  background: linear-gradient(90deg, var(--orange-dark), var(--orange-light));
+  height: 3rem;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+footer a {
+  color: white;
+  transition: scale 0.2s ease-in-out;
+}
+
+footer a:hover {
+  color: white !important;
+  transform: scale(1.1);
 }

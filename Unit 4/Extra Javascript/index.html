@@ -1,66 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-hide">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="./assets/myIcon.png" />
+    <title>Cool Cody</title>
+    <link rel="shortcut icon" href="./assets/myIcon.png" type="image/x-icon" />
     <link rel="stylesheet" href="./styles.css" />
-    <title>Cool Cody's Collection</title>
-    <!-- Required meta tags -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
-    <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-
-    <title>Cool Cody's Hand-me-downs!</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="./assets/myIcon.png" type="image/png" />
   </head>
-  <body class="overflow-hidden">
-    <!-- Button to show main content -->
-    <button id="show-page-btn" type="button">Let's go shopping!</button>
+  <body class="overflow-hide">
+    <!--BS breakpoints -->
+    <div
+      id="breakpoints"
+      style="
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: lightgray;
+        font-weight: bold;
+        font-size: 2rem;
+      "
+    ></div>
 
     <!-- Curtain -->
-    <div id="curtain" class="container-fluid m-0 p-0">
-      <div class="row m-0 p-0">
+    <div id="curtain" class="container-fluid">
+      <div id="curtain-row" class="row">
         <div
-          class="col-6 curtain-description x-collapse-to-left d-flex justify-content-center flex-column"
+          style="background-color: red; height: 100%"
+          class="curtain-text col-12 col-md-6 d-flex justify-content-center flex-column collapse-to-right"
         >
-          <h1>Cool Cody's <br />Collection!</h1>
-          <p>
-            Cool Cody's taken some time out from carving up some gnarly peaks to
-            bring you some sick merch! <br />Some of which may even be useful?!
-            Go check it out!
-          </p>
+          <div class="align-self-center">
+            <h1 class="curtain-heading">
+              Cool&nbsp;<span>Cody's</span> <br />Collection!
+            </h1>
+            <p class="curtain-description">
+              Cool Cody's taken some time out from carving up gnarly peaks to
+              bring you some sick merch!
+            </p>
+            <button id="curtain-button">Let's go!</button>
+          </div>
         </div>
-        <div class="col-6 curtain-hero x-collapse-to-right p-0">
-          <div class="curtain-hero-image w-100"></div>
+        <div
+          style="height: 100%"
+          class="curtain-hero d-none d-md-flex justify-content-center col-6 collapse-to-left"
+        >
+          <img
+            class="align-self-center"
+            src="./assets/logo.png"
+            alt=""
+            style="max-width: 100%; height: fit-content"
+          />
         </div>
       </div>
     </div>
 
-    <!-- Main page content (shop and) -->
-    <div id="page-content" class="container-fluid m-0 p-0">
-      <div class="row m-0 p-0">
-        <div class="col-7 offset-1 products-container">hello</div>
-        <div class="col-3 cart-container">hello</div>
+    <!-- Nav bar -->
+    <div
+      class="container-fluid p-0"
+      id="navbar-container"
+      style="overflow: hidden; position: fixed; top: 0; left: 0; z-index: 2"
+    >
+      <div class="row" style="position: relative">
+        <svg
+          width="140"
+          height="65"
+          style="
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3.5rem;
+            z-index: 1;
+          "
+        >
+          <polygon points="0,65 140,65 0,0" fill="#ffffff" />
+        </svg>
+        <svg
+          class="d-none d-md-block"
+          width="100"
+          height="100"
+          style="
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            transform: translateY(100%) scale(1.7);
+            z-index: 1;
+          "
+        >
+          <polygon points="0,25 50,0 100,25" fill="white" />
+        </svg>
+        <svg
+          class="d-none d-md-block"
+          width="100"
+          height="100"
+          style="
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            transform: translate(-350%, 85%);
+            z-index: 1;
+          "
+        >
+          <polygon points="0,25 50,0 100,25" fill="white" />
+        </svg>
+        <img
+          id="coolCodyImg"
+          src="./assets/logo.png"
+          style="
+            width: 64px;
+            height: 64px;
+            transform: scaleX(-1);
+            z-index: 11;
+            position: relative;
+            top: 0;
+            left: 0;
+          "
+          alt=""
+          class="m-2"
+        />
+        <nav
+          class="nav justify-content-between align-items-center col-7 col-sm-8 mx-auto m-2 p-0"
+        >
+          <a
+            class="navbar-brand"
+            href="#"
+            style="
+              color: white;
+              font-family: 'Cartoon', sans-serif;
+              line-height: 2rem;
+              font-size: 2rem;
+              margin-left: 1rem;
+            "
+            >Cool <strong>Cody's</strong><br />Collection!</a
+          >
+          <a class="nav-button" href="#">
+            <svg
+              id="mySVG"
+              width="800px"
+              height="800px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.78571 5H18.2251C19.5903 5 20.5542 6.33739 20.1225 7.63246L18.4558 12.6325C18.1836 13.4491 17.4193 14 16.5585 14H6.07142M4.78571 5L4.74531 4.71716C4.60455 3.73186 3.76071 3 2.76541 3H2M4.78571 5L6.07142 14M6.07142 14L6.25469 15.2828C6.39545 16.2681 7.23929 17 8.23459 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM11 19C11 20.1046 10.1046 21 9 21C7.89543 21 7 20.1046 7 19C7 17.8954 7.89543 17 9 17C10.1046 17 11 17.8954 11 19Z"
+                stroke="#FFFFFF"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </nav>
       </div>
     </div>
 
-    <!-- Optional JavaScript -->
-    <script src="main.js"></script>
+    <!-- Products container -->
+    <div class="product-container" style="z-index: 1">
+      <!-- Product cards go here: -->
+    </div>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <footer>
+      <a href="#">Go to top</a>
+    </footer> -->
+
+    <!-- JavaScript -->
+    <script src="./main.js"></script>
+    <script src="fetchData.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

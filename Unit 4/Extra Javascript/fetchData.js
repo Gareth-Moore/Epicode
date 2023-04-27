@@ -3,8 +3,9 @@
 const END_POINT = "https://dummyjson.com/products";
 URLSearchParams; //What is this? Investigate?
 
-// Fetch call nested in function so i can manually run <REMOVE LATER>
-window.onload = fetchData;
+window.onload = fetchData; // comment out if you don't want the Fetch request to run
+
+// Fetch request and populate products page
 function fetchData() {
   fetch(END_POINT)
     .then((response) => response.json())

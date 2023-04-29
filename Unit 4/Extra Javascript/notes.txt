@@ -1,63 +1,49 @@
+Todays mission:
 
-Start mobile first:
-Add navbar 
-organise data from fetch
-create item div/card template
-populate card data from fetch and functions
-<<<<DONE>>>>>
-create shopping card modal
+Create "More information" page
+    1. Create more info page on info below. Copy Navbar over
+    2. Create template for product>more-info 
+    3. Figure out how to go to new page with specific API call and populate template
+Create shopping cart modal
+>>>>>>>>>>>>>>>>>>>>>   DONE   <<<<<<<<<<<<<<<<<<<<<
+    1. "Add to cart" functionality
+    2. Shopping cart modal showing:
+        Product cards:
+            Item.title
+            Item.thumbnail
+            How many items
+            Total price
+            Remove/add from/to cart button
+        Modal:
+            list of products cards
+            total price
 
-js heavy stuff:
-create cart functionality (bootstrap this one)
-    > create notication when item is added to cart via cart icon animation + display number of items 
-    > user opens modal with cart Click. If you click purchase it should show a funny message.
-    > on item card: add / remove item to cart
-    > On item card: display how many are currently in cart
-    > handle modal scroll if there are lots of items
+Stretch goals:
+    1. Create a notification display next to the cart icon showing current # of items in cart.
+
+
+
+
+
 
 
 Reponse Object > JSON:
 
-brand: "Apple"
-category: "smartphones"
-description: "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ..."
-discountPercentage: 17.94
-id: 2
-images: Array(4)
-    0: "https://i.dummyjson.com/data/products/2/1.jpg"
-    1: "https://i.dummyjson.com/data/products/2/2.jpg"
-    2: "https://i.dummyjson.com/data/products/2/3.jpg"
-    3: "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-price: 899
-rating: 4.44
-stock: 34
-thumbnail:"https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-title:"iPhone X"
+1.    id: 2
+2.    title:"iPhone X"
+3.    thumbnail:"https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+4.    images: Array(4)
+        0: "https://i.dummyjson.com/data/products/2/1.jpg"
+        1: "https://i.dummyjson.com/data/products/2/2.jpg"
+        3: "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+        2: "https://i.dummyjson.com/data/products/2/3.jpg"
+5.    brand: "Apple"
+6.    category: "smartphones"
+7.    description: "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ..."
+8.    discountPercentage: 17.94
+9.    price: 899
+10.   rating: 4.44
+11.   stock: 34
 
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-Each card contains:
-images: Array(4)
-    0: "https://i.dummyjson.com/data/products/2/1.jpg"
-title:"iPhone X"
-description: "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ..."
-discountPercentage: 17.94
-price: 899
-rating: 4.44
-(2 buttons containing 'Purchase' and 'Details')
 
->>> Calculate original price from discount:
-original price = 899 / (1 - 0.1794)
-original price = 899 / 0.8206
-original price = 1095.16
-
-
-brand: "Apple"
-stock: 34
-thumbnail:"https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-id: 2
-category: "smartphones"
-images: Array(4)
-    1: "https://i.dummyjson.com/data/products/2/2.jpg"
-    2: "https://i.dummyjson.com/data/products/2/3.jpg"
-    3: "https://i.dummyjson.com/data/products/2/thumbnail.jpg"

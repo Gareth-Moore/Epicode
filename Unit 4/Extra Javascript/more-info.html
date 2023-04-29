@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="overflow-hide">
+<html lang="en">
   <head>
     <title>Cool Cody</title>
     <link rel="shortcut icon" href="./assets/myIcon.png" type="image/x-icon" />
@@ -22,107 +22,7 @@
       crossorigin="anonymous"
     />
   </head>
-  <body class="overflow-hide">
-    <!-- Cart Modal -->
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div
-        class="modal-dialog"
-        style="border-radius: 0; font-family: 'Quicksand', sans-serif"
-      >
-        <div class="modal-content" style="border-radius: 0">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Your cart:</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <!-- modal body -->
-          <div class="modal-body pl-5 pr-5">
-            <!-- modat cart items -->
-            <!-- <div id="modal-item-1" class="d-flex justify-content-between">
-              <p id="modal-item-1-title" class="mt-2 mb-2"></p>
-              <div
-                class="add-remove-cart d-flex justify-content-start align-items-center"
-              >
-                <button class="add-remove-btn">-</button>
-                <button class="add-remove-btn ml-1">+</button>
-                <p class="mt-2 mb-2 ml-2">
-                  x<span id="modal-item-1-itemCount"></span>&nbsp;&nbsp;$<span
-                    id="modal-item-1-itemTotal"
-                  ></span>
-                </p>
-              </div>
-            </div> -->
-            <div id="cart-total" class="d-flex justify-content-end mt-3">
-              <strong>Total: $<span id="modal-total-price">0</span></strong>
-            </div>
-          </div>
-
-          <!-- modal footer -->
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Back to shopping
-            </button>
-            <button
-              type="button"
-              class="btn btn-info"
-              style="background-color: var(--torquoise-dark)"
-              data-dismiss="modal"
-            >
-              Proceed to checkout
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Curtain -->
-    <div id="curtain" class="container-fluid">
-      <div id="curtain-row" class="row">
-        <div
-          style="background-color: red; height: 100%"
-          class="curtain-text col-12 col-md-6 d-flex justify-content-center flex-column collapse-to-right"
-        >
-          <div class="align-self-center">
-            <h1 class="curtain-heading">
-              Cool&nbsp;<span>Cody's</span> <br />Collection!
-            </h1>
-            <p class="curtain-description">
-              Cool Cody's taken some time out from carving up gnarly peaks to
-              bring you some sick merch!
-            </p>
-            <button id="curtain-button">Let's go!</button>
-          </div>
-        </div>
-        <div
-          style="height: 100%"
-          class="curtain-hero d-none d-md-flex justify-content-center col-6 collapse-to-left"
-        >
-          <img
-            class="align-self-center"
-            src="./assets/logo.png"
-            alt=""
-            style="max-width: 100%; height: fit-content"
-          />
-        </div>
-      </div>
-    </div>
-
+  <body style="height: unset">
     <!-- Nav bar -->
     <div
       class="container-fluid p-0"
@@ -199,15 +99,9 @@
               font-size: 2rem;
               margin-left: 1rem;
             "
-            onclick="fetchData()"
             >Cool <strong>Cody's</strong><br />Collection!</a
           >
-          <a
-            class="nav-button"
-            href="#"
-            data-toggle="modal"
-            data-target="#exampleModal"
-          >
+          <a class="nav-button" href="#" style="opacity: 0">
             <svg
               id="mySVG"
               width="800px"
@@ -229,20 +123,25 @@
       </div>
     </div>
 
-    <!-- Products container -->
-    <div class="product-container" style="z-index: 1">
-      <!-- Product cards go here: -->
-    </div>
+    <div
+      id="breakpoints"
+      style="
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: lightgray;
+        font-weight: bold;
+        font-size: 2rem;
+        z-index: 999;
+      "
+    ></div>
 
-    <!-- <footer>
-      <a href="#">Go to top</a>
-    </footer> -->
+    <!-- Product Details Container -->
+    <div class="product-details-container grid-container"></div>
 
     <!-- JavaScript -->
     <script src="./main.js"></script>
-    <script src="./curtain.js"></script>
-    <script src="fetchProducts.js"></script>
-    <script src="cart.js"></script>
+    <script src="./fetchProductID.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

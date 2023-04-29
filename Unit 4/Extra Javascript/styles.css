@@ -1,3 +1,15 @@
+/* 
+  INDEX: 
+  > Defaults, fonts and colours
+  > Curtain (index.html only)
+  > Navbar
+  > Products container (index.html only)
+  > Footer (index.html only)
+  > More Information page (more-info.html only)
+    > Product details card
+  > Cart Modal (index.html only)
+*/
+
 /* Defaults, fonts and colours */
 
 @font-face {
@@ -10,6 +22,12 @@
         'Quicksand'
         'Cartoon'
 */
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
 
 html {
   --white: #ffffff;
@@ -328,6 +346,10 @@ body {
   color: var(--grey-light);
 }
 
+.product-card-content .discount span {
+  font-weight: bold;
+}
+
 .product-card-content .action-buttons {
   color: var(--grey-dark);
   font-size: 0.9rem;
@@ -349,15 +371,30 @@ body {
   background-color: rgba(211, 211, 211, 0.151);
 }
 
+.product-card-content .action-buttons .more-info a:hover {
+  text-decoration: none;
+}
+
 .product-card-content .action-buttons .add-to-cart {
-  border: 1px solid lightgray;
   background-color: var(--torquoise-very-light);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.5s ease;
+  border: 1px solid lightgray;
   color: white;
 }
 
 .product-card-content .action-buttons button:hover {
   background-color: white;
   color: var(--torquoise-very-light);
+}
+
+.button-click-indicator {
+  box-shadow: 0 0 0 2px var(--orange-light) !important;
+  font-weight: bold;
+}
+
+.product-card-content .action-buttons .add-to-cart:focus {
+  outline: none;
 }
 
 .product-card-image {
@@ -420,4 +457,83 @@ footer a {
 footer a:hover {
   color: white !important;
   transform: scale(1.1);
+}
+
+/* More Information page */
+
+/* Product details card */
+
+.product-details-container.grid-container {
+  display: grid;
+  width: 300px;
+  grid-template-columns: 1fr;
+  margin: 9rem auto 0 auto;
+  padding-bottom: 4rem;
+  gap: 0px;
+}
+
+.grid-item {
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  border: 1px solid lightgray;
+}
+
+.grid-item.grid-item-name {
+  width: 300px;
+  background-color: rgba(211, 211, 211, 0.151);
+}
+
+.grid-item.grid-item-info {
+  font-weight: lighter;
+  width: 300px;
+  margin-bottom: 1rem;
+  border-top: none;
+}
+
+@media screen and (min-width: 768px) {
+  .product-details-container.grid-container {
+    display: grid;
+    width: 600px;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 9rem auto 0 auto;
+    gap: 5px 0;
+  }
+  .grid-item.grid-item-name {
+    width: 200px;
+  }
+  .grid-item.grid-item-info {
+    width: 400px;
+    border-top: 1px solid lightgray;
+    border-left: none;
+    margin-bottom: unset;
+  }
+}
+
+/* Cart Modal */
+
+.add-remove-cart p {
+  user-select: none;
+}
+
+.add-remove-btn {
+  border: 1px solid lightgray;
+  line-height: 1rem;
+  width: 18px;
+  padding: 0;
+  height: 18px;
+  user-select: none;
+}
+
+.add-remove-btn:hover {
+  background-color: #cf6704;
+  color: white;
+  outline: none;
+  border: none;
+}
+.add-remove-btn:focus {
+  outline: none;
+}
+
+#cart-total {
+  user-select: none;
 }
